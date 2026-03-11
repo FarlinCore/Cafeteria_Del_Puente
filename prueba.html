@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1 id="titulo">Hola, soy un título</h1>
+    <button id="miBoton">Cambiame el color</button>
+
+    <script>
+        // 1. Seleccionamos los elementos
+        const boton = document.getElementById('miBoton');
+        const titulo = document.getElementById('titulo');
+
+        // 2. Creamos la lógica (El músculo)
+        boton.addEventListener('click', function () {
+            titulo.style.color = 'orange'; // Cambia el color al naranja de tu logo
+            titulo.innerText = '¡Cambié gracias a JavaScript!';
+        });
+    </script>
+
+</body>
+
+</html>

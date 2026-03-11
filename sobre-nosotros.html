@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class=" w-full top-0 z-50 lg:px-16 px-4 bg-white flex flex-wrap items-center py-2 shadow-lg">
+        <div class="flex-1 flex justify-between items-center">
+            <a href="#" class="text-3xl text-[#55301c] font-semibold">Menu</a>
+        </div>
+
+        <label for="menu-toggle" class="pointer-cursor md:hidden block">
+            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                viewBox="0 0 20 20">
+                <title>Sobre Nosotros</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+        </label>
+        <input class="hidden" type="checkbox" id="menu-toggle" />
+
+        <div class="hidden md:flex md:items-center md:w-auto w-full" id="menu">
+            <nav>
+                <ul class="md:flex items-center justify-between text-base text-[#55301c] pt-4 md:pt-0">
+                    <li><a class="md:p-4 py-3 px-0 block" href="#">Inicio</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block" href="#">Menu</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block" href="#">Sobre Nosotros</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block" href="#">Nuestra Gente</a></li>
+                    <li><a class=" font-semibold py-1 md:p-1 text-[#55301c] md:mb-0 mb-2 rounded-full bg-white"
+                            href="#">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="about" class="py-16  bg-[#55301c] text-white">
+        <div class="container mt-15 mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl font-bold mb-6">Nuestra Historia</h2>
+                    <p class="mb-4">Proximamente...</p>
+                    <p class="mb-4"></p>
+                    <p class="mb-6"></p>
+                    <div class="flex space-x-4">
+                        <div class="bg-amber-800 p-4 rounded-lg text-center flex-1">
+                            <div class="text-3xl font-bold mb-1"></div>
+                            <div class="text-sm">...</div>
+                        </div>
+                        <div class="bg-amber-800 p-4 rounded-lg text-center flex-1">
+                            <div class="text-3xl font-bold mb-1"></div>
+                            <div class="text-sm">...</div>
+                        </div>
+                        <div class="bg-amber-800 p-4 rounded-lg text-center flex-1">
+                            <div class="text-3xl font-bold mb-1"></div>
+                            <div class="text-sm">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <img src="./images/puente fondo.png" alt="Coffee shop interior" class="w-full h-auto">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-amber-900/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Del puente cafeteria</h3>
+                                <p class="text-sm">Ven y pasa un grandioso momento aqui. Un espacio hecho para ti</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
