@@ -17,7 +17,7 @@ window.addEventListener('scroll', () => {
         lista.classList.add("font-bold");
         lista.classList.remove("font-light");
 
-        contacto.classList.remove("bg-[#F47E24]", "text-white");
+        contacto.classList.remove("bg-[#F47E24]", "text-white", "hover:bg-white", "hover:text-[#F47E24]");
         contacto.classList.add("bg-white", "text-[#55301c]", "hover:bg-[#F47E24]", "hover:text-white");
 
         logo.src = "./images/logo-blanco.svg";
@@ -30,10 +30,11 @@ window.addEventListener('scroll', () => {
         menu.classList.add("shadow-lg", "py-2", "top-0");
         menu.classList.remove("bg-transparent", "bg-[#55301c]", "top-8");
 
+        contenedorMenu2.classList.add("pb-0");
+        contenedorMenu2.classList.remove("pb-8");
 
         lista.classList.add("font-light");
         lista.classList.remove("font-bold");
-
 
         logo.src = "./images/logo-blanco.svg";
         logo.classList.add("h-16");
@@ -45,6 +46,8 @@ window.addEventListener('scroll', () => {
         menu.classList.remove("shadow-lg", "bg-[#382212]", "py-2", "top-0");
         menu.classList.add("bg-transparent", "top-8");
 
+        contenedorMenu2.classList.add("pb-8");
+        contenedorMenu2.classList.remove("pb-0");
 
         lista.classList.add("font-light");
         lista.classList.remove("font-bold");
@@ -58,3 +61,20 @@ window.addEventListener('scroll', () => {
     }
 });
 
+
+/* ESTE ES EL JavaScript QUE VINO CON EL FRAGMENTO EN UN <script> decidi colocarlo en el dinamismo.js */
+// === SLIDE DE PLANTILLA TAILWIND ===
+const heroSlides = document.querySelectorAll('.hero-slide');
+let currentSlide = 0;
+
+function showSlide(n) {
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    heroSlides[n].classList.add('active');
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    showSlide(currentSlide);
+}
+
+setInterval(nextSlide, 3500); // cambia cada 3.5 segundos
