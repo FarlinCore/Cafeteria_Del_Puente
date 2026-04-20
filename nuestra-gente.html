@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Gente</title>
+    <title>Nuestra Gente – Cafetería del Puente</title>
+    <meta name="description"
+        content="Conoce los momentos y las personas que hacen especial a Cafetería del Puente. Galería de fotos y clientes.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <header class=" w-full top-0 z-50 lg:px-16 px-4 bg-white flex flex-wrap items-center py-2 shadow-lg">
+<body class="bg-[#0d1117] text-white">
+
+    <!-- ====================================================== -->
+    <!-- NAVBAR -->
+    <!-- ====================================================== -->
+    <header
+        class="w-full top-0 z-50 lg:px-16 px-4 bg-[#0d1117]/95 backdrop-blur-sm flex flex-wrap items-center py-3 shadow-xl border-b border-white/5">
         <div class="flex-1 flex justify-between items-center">
-            <a href="#" class="text-3xl text-[#55301c] font-semibold">Menu</a>
+            <a href="./index.html">
+                <img src="./images/logo-blanco.svg" class="h-10" alt="Logo Cafetería del Puente">
+            </a>
         </div>
 
         <label for="menu-toggle" class="pointer-cursor md:hidden block">
-            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 viewBox="0 0 20 20">
-                <title>Nuestra Gente</title>
+                <title>Menú de navegación</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
             </svg>
         </label>
@@ -26,90 +35,320 @@
 
         <div class="hidden md:flex md:items-center md:w-auto w-full" id="menu">
             <nav>
-                <ul class="md:flex items-center justify-between text-base text-[#55301c] pt-4 md:pt-0">
-                    <li><a class="md:p-4 py-3 px-0 block" href="./index.html">Inicio</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block" href="./menu.html">Menu</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block" href="./sobre-nosotros.html">Sobre Nosotros</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block" href="./nuestra-gente.html">Nuestra Gente</a></li>
-                    <li><a class=" font-semibold py-1 md:p-1 text-[#55301c] md:mb-0 mb-2 rounded-full bg-white"
-                            href="./contacto.html">Contacto</a>
-                    </li>
+                <ul class="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./index.html">Inicio</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./menu.html">Menú</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block text-[#F47E24] font-semibold"
+                            href="./nuestra-gente.html">Nuestra Gente</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./contacto.html">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <div class="bg-[#55301c] h-screen h-full py-6 sm:py-8 lg:py-12">
-        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-            <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
-                <div class="flex items-center gap-12">
-                    <h2 class="text-2xl font-bold text-gray-800 lg:text-3xl dark:text-white">Nuestra Gente</h2>
 
-                    <p class="hidden max-w-screen-sm text-gray-500 dark:text-gray-300 md:block">
-                        En esta seccion veremos diversos momentos fotografiados
-                    </p>
+    <!-- ====================================================== -->
+    <!-- HERO: 4 FLOATING PHOTO CARDS -->
+    <!-- ====================================================== -->
+    <section
+        class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0d1117] pt-24 pb-20">
+
+        <!-- Ambient orange glow -->
+        <div
+            class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#F47E24]/8 rounded-full blur-[140px] pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[#F47E24]/5 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <!-- Title block -->
+        <div class="text-center z-10 mb-16 px-4">
+            <span
+                class="inline-block text-[#F47E24] uppercase tracking-[0.3em] text-xs font-bold mb-4 px-5 py-2 border border-[#F47E24]/30 rounded-full bg-[#F47E24]/8">
+                📸 Momentos que importan
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mt-5 tracking-tight leading-none">
+                Nuestra <span class="text-[#F47E24]">Gente</span>
+            </h1>
+            <p class="text-gray-400 mt-5 text-lg max-w-lg mx-auto leading-relaxed">
+                Cada día, historias reales alrededor de una buena taza y algo delicioso.
+            </p>
+        </div>
+
+        <!-- 4 Floating Photo Cards -->
+        <div class="flex flex-row items-end justify-center gap-3 md:gap-5 z-10 px-4">
+
+            <!-- Card 1 -->
+            <div
+                class="float-card-1 w-36 md:w-52 h-52 md:h-80 rounded-2xl overflow-hidden shadow-2xl shadow-black/70 flex-shrink-0 ring-1 ring-white/10">
+                <img src="./images/MOMENTS 1.jpg" class="w-full h-full object-cover" alt="Momento 1 Cafetería">
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="float-card-2 w-36 md:w-52 h-60 md:h-96 rounded-2xl overflow-hidden shadow-2xl shadow-black/70 flex-shrink-0 ring-1 ring-white/10 mb-6">
+                <img src="./images/MOMENTS 3.jpg" class="w-full h-full object-cover" alt="Momento 3 Cafetería">
+            </div>
+
+            <!-- Card 3 -->
+            <div
+                class="float-card-3 w-36 md:w-52 h-60 md:h-96 rounded-2xl overflow-hidden shadow-2xl shadow-black/70 flex-shrink-0 ring-1 ring-white/10 mb-6">
+                <img src="./images/MOMENTS 5.jpg" class="w-full h-full object-cover" alt="Momento 5 Cafetería">
+            </div>
+
+            <!-- Card 4 -->
+            <div
+                class="float-card-4 w-36 md:w-52 h-52 md:h-80 rounded-2xl overflow-hidden shadow-2xl shadow-black/70 flex-shrink-0 ring-1 ring-white/10">
+                <img src="./images/MOMENTS 7.jpg" class="w-full h-full object-cover" alt="Momento 7 Cafetería">
+            </div>
+
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce">
+            <span class="text-gray-600 text-xs tracking-widest uppercase">scroll</span>
+            <i class="fas fa-chevron-down text-gray-600 text-xs"></i>
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- BENTO GRID: MOMENTOS DEL PUENTE -->
+    <!-- ====================================================== -->
+    <section class="bg-[#111827] py-20 px-4 md:px-10">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Section header -->
+            <div class="mb-12 text-center">
+                <span class="text-[#F47E24] uppercase tracking-[0.25em] text-xs font-bold">Galería</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">
+                    Momentos del <span class="text-[#F47E24]">Puente</span>
+                </h2>
+                <div class="w-16 h-1 bg-[#F47E24] rounded-full mx-auto mt-5"></div>
+            </div>
+
+            <!-- Bento photo grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                <!-- Large item: 2 cols × 2 rows -->
+                <div
+                    class="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl shadow-2xl group h-64 md:h-auto">
+                    <img src="./images/MOMENTS 2.jpg" alt="Nuestra esencia"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Nuestra Esencia</h3>
+                            <p class="text-gray-300 text-sm mt-1">La vida alrededor del puente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/MOMENTS 4.jpg" alt="Momentos"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Momentos</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/EMPLEADOS.jpg" alt="Nuestro equipo"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Nuestro Equipo</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/MOMENTS 6.jpg" alt="Vivencias"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Vivencias</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/MOMENTS 8.jpg" alt="Recuerdos"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Recuerdos</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom row -->
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/CHICA EMPANADA.jpg" alt="Sabor"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Sabor</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/CHICA Y NEVADA.jpg" alt="Frescura"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Frescura</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/MOMENTS 3.jpg" alt="Juntos"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Juntos</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl shadow-xl group h-48">
+                    <img src="./images/MOMENTS 5.jpg" alt="Alegría"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h4 class="text-white font-semibold">Alegría</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- CLIENTES SATISFECHOS -->
+    <!-- ====================================================== -->
+    <section class="bg-[#0d1117] py-20 px-4 md:px-10">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="mb-14 text-center">
+                <span class="text-[#F47E24] uppercase tracking-[0.25em] text-xs font-bold">Comunidad</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">
+                    Clientes <span class="text-[#F47E24]">Satisfechos</span>
+                </h2>
+                <p class="text-gray-500 mt-4 max-w-md mx-auto text-base leading-relaxed">
+                    Un espacio reservado para las personas que nos visitan y nos alegran el día.
+                    ¡Pronto tus fotos estarán aquí!
+                </p>
+                <div class="w-16 h-1 bg-[#F47E24] rounded-full mx-auto mt-5"></div>
+            </div>
+
+            <!-- 8 placeholder frames -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
+                </div>
+
+                <div
+                    class="bg-[#151d2b] border-2 border-dashed border-white/10 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/40 hover:bg-[#1a2333] transition-all duration-300 cursor-pointer group">
+                    <div
+                        class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#F47E24]/10 transition-colors duration-300">
+                        <i class="fas fa-camera text-white/20 text-xl group-hover:text-[#F47E24]/50 transition-colors duration-300"></i>
+                    </div>
+                    <p class="text-white/20 text-xs text-center px-4 group-hover:text-white/40 transition-colors duration-300">Tu foto aquí</p>
                 </div>
 
             </div>
 
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
-                <!-- image - start -->
-                <a href="#"
-                    class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
-                    <img src="./images/MOMENTS 1.jpg" loading="lazy" alt="Photo by Minh Pham"
-                        class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-
-                    <div
-                        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
-                    </div>
-
-                    <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Moments</span>
-                </a>
-                <!-- image - end -->
-
-                <!-- image - start -->
-                <a href="#"
-                    class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
-                    <img src="./images/MOMENTS 7.jpg" loading="lazy" alt="Photo by Magicle"
-                        class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-
-                    <div
-                        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
-                    </div>
-
-                    <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">team</span>
-                </a>
-                <!-- image - end -->
-
-                <!-- image - start -->
-                <a href="#"
-                    class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
-                    <img src="./images/MOMENTS 8.jpg" loading="lazy" alt="Photo by Martin Sanchez"
-                        class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-
-                    <div
-                        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
-                    </div>
-
-                    <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg"></span>
-                </a>
-                <!-- image - end -->
-
-                <!-- image - start -->
-                <a href="#"
-                    class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
-                    <img src="./images/MOMENTS 2.jpg" loading="lazy" alt="Photo by Lorenzo Herrera"
-                        class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-
-                    <div
-                        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
-                    </div>
-
-                    <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg"></span>
-                </a>
-                <!-- image - end -->
+            <div class="mt-10 text-center">
+                <span
+                    class="inline-flex items-center gap-2 text-gray-600 text-sm px-5 py-2 border border-white/5 rounded-full">
+                    <i class="fas fa-hourglass-half text-[#F47E24]/50 text-xs"></i>
+                    Próximamente — ¡Tu rostro podría estar aquí!
+                </span>
             </div>
+
         </div>
-    </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>

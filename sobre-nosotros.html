@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros</title>
+    <title>Sobre Nosotros – Cafetería del Puente</title>
+    <meta name="description"
+        content="Conoce la historia, los valores y el horario de Cafetería del Puente. Un espacio hecho para ti.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <header class=" w-full top-0 z-50 lg:px-16 px-4 bg-white flex flex-wrap items-center py-2 shadow-lg">
+<body class="bg-[#0d1117] text-white">
+
+    <!-- ====================================================== -->
+    <!-- NAVBAR -->
+    <!-- ====================================================== -->
+    <header
+        class="w-full top-0 z-50 lg:px-16 px-4 bg-[#0d1117]/95 backdrop-blur-sm flex flex-wrap items-center py-3 shadow-xl border-b border-white/5">
         <div class="flex-1 flex justify-between items-center">
-            <a href="#" class="text-3xl text-[#55301c] font-semibold">Sobre Nosotros</a>
+            <a href="./index.html">
+                <img src="./images/logo-blanco.svg" class="h-10" alt="Logo Cafetería del Puente">
+            </a>
         </div>
 
         <label for="menu-toggle" class="pointer-cursor md:hidden block">
-            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 viewBox="0 0 20 20">
-                <title>Sobre Nosotros</title>
+                <title>Menú de navegación</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
             </svg>
         </label>
@@ -26,56 +35,355 @@
 
         <div class="hidden md:flex md:items-center md:w-auto w-full" id="menu">
             <nav>
-                <ul class="md:flex items-center justify-between text-base text-[#55301c] pt-4 md:pt-0">
-                    <li><a class="md:p-4 py-3 px-0 block" href="./index.html">Inicio</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block" href="./menu.html">Menu</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block" href="./sobre-nosotros.html">Sobre Nosotros</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block" href="./nuestra-gente.html">Nuestra Gente</a></li>
-                    <li><a class=" font-semibold py-1 md:p-1 text-[#55301c] md:mb-0 mb-2 rounded-full bg-white"
-                            href="./contacto.html">Contacto</a>
-                    </li>
+                <ul class="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./index.html">Inicio</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./menu.html">Menú</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block text-[#F47E24] font-semibold"
+                            href="./sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./nuestra-gente.html">Nuestra Gente</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
+                            href="./contacto.html">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <section id="about" class="py-16  bg-[#55301c] text-white">
-        <div class="container mt-15 mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
-                    <h2 class="text-3xl font-bold mb-6">Nuestra Historia</h2>
-                    <p class="mb-4">Proximamente...</p>
-                    <p class="mb-4"></p>
-                    <p class="mb-6"></p>
-                    <div class="flex space-x-4">
-                        <div class="bg-amber-800 p-4 rounded-lg text-center flex-1">
-                            <div class="text-3xl font-bold mb-1"></div>
-                            <div class="text-sm">...</div>
+
+    <!-- ====================================================== -->
+    <!-- HERO BANNER — imagen con degradado hacia el fondo -->
+    <!-- ====================================================== -->
+    <section class="relative h-[65vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
+
+        <!-- Background image -->
+        <img src="./images/puente fondo.png" alt="Cafetería del Puente"
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+
+        <!-- Gradient: imagen visible arriba, funde al color de página abajo -->
+        <div class="absolute inset-0"
+            style="background: linear-gradient(to bottom, rgba(13,17,23,0.35) 0%, rgba(0,0,0,0.45) 40%, rgba(13,17,23,0.85) 75%, #0d1117 100%);">
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-6">
+            <span
+                class="inline-block text-[#F47E24] uppercase tracking-[0.3em] text-xs font-bold mb-4 px-5 py-2 border border-[#F47E24]/30 rounded-full bg-[#F47E24]/10">
+                ☕ Nuestra historia
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mt-4 tracking-tight leading-none drop-shadow-2xl">
+                Sobre <span class="text-[#F47E24]">Nosotros</span>
+            </h1>
+            <p class="text-gray-300 mt-5 text-lg max-w-xl mx-auto leading-relaxed">
+                Un espacio donde el sabor, la gente y el puente se encuentran cada día.
+            </p>
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- NUESTRA HISTORIA — Placeholder para admin -->
+    <!-- ====================================================== -->
+    <section class="bg-[#0d1117] py-20 px-4 md:px-10">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- LEFT: Story text placeholder -->
+                <div>
+                    <span class="text-[#F47E24] uppercase tracking-[0.25em] text-xs font-bold">Quiénes somos</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">
+                        Nuestra <span class="text-[#F47E24]">Historia</span>
+                    </h2>
+
+                    <!-- Placeholder content block -->
+                    <div
+                        class="relative border border-dashed border-white/15 rounded-2xl p-7 bg-[#111827] overflow-hidden">
+
+                        <!-- Próximamente badge -->
+                        <span
+                            class="absolute top-4 right-4 text-[10px] uppercase tracking-widest text-[#F47E24]/70 border border-[#F47E24]/20 rounded-full px-3 py-1 bg-[#F47E24]/5">
+                            Próximamente
+                        </span>
+
+                        <!-- Placeholder skeleton lines -->
+                        <div class="space-y-3 mt-4">
+                            <div class="h-3 bg-white/5 rounded-full w-full"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-5/6"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-full"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-4/6"></div>
                         </div>
-                        <div class="bg-amber-800 p-4 rounded-lg text-center flex-1">
-                            <div class="text-3xl font-bold mb-1"></div>
-                            <div class="text-sm">...</div>
+                        <div class="space-y-3 mt-5">
+                            <div class="h-3 bg-white/5 rounded-full w-full"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-3/4"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-full"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-5/6"></div>
+                            <div class="h-3 bg-white/5 rounded-full w-2/3"></div>
                         </div>
-                        <div class="bg-amber-800 p-4 rounded-lg text-center flex-1">
-                            <div class="text-3xl font-bold mb-1"></div>
-                            <div class="text-sm">...</div>
+
+                        <!-- Note for admin -->
+                        <div class="mt-8 flex items-start gap-3 border-t border-white/5 pt-5">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#F47E24]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-pen text-[#F47E24]/60 text-xs"></i>
+                            </div>
+                            <p class="text-gray-600 text-xs leading-relaxed italic">
+                                Este espacio está reservado para la historia de Cafetería del Puente.
+                                El administrador podrá completar este contenido próximamente.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quick stats -->
+                    <div class="grid grid-cols-3 gap-4 mt-8">
+                        <div class="bg-[#111827] border border-white/5 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-bold text-[#F47E24]">—</div>
+                            <div class="text-gray-500 text-xs mt-1 uppercase tracking-wider">Años de historia</div>
+                        </div>
+                        <div class="bg-[#111827] border border-white/5 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-bold text-[#F47E24]">—</div>
+                            <div class="text-gray-500 text-xs mt-1 uppercase tracking-wider">Platos servidos</div>
+                        </div>
+                        <div class="bg-[#111827] border border-white/5 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-bold text-[#F47E24]">—</div>
+                            <div class="text-gray-500 text-xs mt-1 uppercase tracking-wider">Sonrisas al día</div>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2">
-                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
-                        <img src="./images/puente fondo.png" alt="Coffee shop interior" class="w-full h-auto">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-amber-900/80 to-transparent flex items-end p-6">
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2">Del puente cafeteria</h3>
-                                <p class="text-sm">Ven y pasa un grandioso momento aqui. Un espacio hecho para ti</p>
-                            </div>
+
+                <!-- RIGHT: Photo -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/5 h-96 md:h-[520px]">
+                    <img src="./images/puente fondo.jpg" alt="Cafetería del Puente"
+                        class="w-full h-full object-cover object-center">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#0d1117]/85 via-transparent to-transparent flex items-end p-7">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">Del Puente Cafetería</h3>
+                            <p class="text-gray-300 text-sm">Ven y pasa un grandioso momento aquí. Un espacio hecho
+                                para ti.</p>
                         </div>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- NUESTROS VALORES -->
+    <!-- ====================================================== -->
+    <section class="bg-[#111827] py-20 px-4 md:px-10">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-14">
+                <span class="text-[#F47E24] uppercase tracking-[0.25em] text-xs font-bold">Lo que nos mueve</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">
+                    Nuestros <span class="text-[#F47E24]">Valores</span>
+                </h2>
+                <div class="w-16 h-1 bg-[#F47E24] rounded-full mx-auto mt-5"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                <!-- Calidad -->
+                <div
+                    class="bg-[#151d2b] border border-white/5 rounded-2xl p-7 flex flex-col items-center text-center hover:border-[#F47E24]/30 hover:bg-[#1a2333] transition-all duration-300 group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-[#F47E24]/10 flex items-center justify-center mb-5 group-hover:bg-[#F47E24]/20 transition-colors duration-300">
+                        <i class="fas fa-star text-[#F47E24] text-xl"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Calidad</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Ingredientes frescos y preparación con dedicación
+                        en cada pedido.</p>
+                </div>
+
+                <!-- Tradición -->
+                <div
+                    class="bg-[#151d2b] border border-white/5 rounded-2xl p-7 flex flex-col items-center text-center hover:border-[#F47E24]/30 hover:bg-[#1a2333] transition-all duration-300 group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-[#F47E24]/10 flex items-center justify-center mb-5 group-hover:bg-[#F47E24]/20 transition-colors duration-300">
+                        <i class="fas fa-heart text-[#F47E24] text-xl"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Tradición</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Sabores auténticos que conectan con las raíces de
+                        nuestra comunidad.</p>
+                </div>
+
+                <!-- Comunidad -->
+                <div
+                    class="bg-[#151d2b] border border-white/5 rounded-2xl p-7 flex flex-col items-center text-center hover:border-[#F47E24]/30 hover:bg-[#1a2333] transition-all duration-300 group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-[#F47E24]/10 flex items-center justify-center mb-5 group-hover:bg-[#F47E24]/20 transition-colors duration-300">
+                        <i class="fas fa-people-group text-[#F47E24] text-xl"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Comunidad</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Un espacio donde todos son bienvenidos y cada
+                        visita es especial.</p>
+                </div>
+
+                <!-- Sabor -->
+                <div
+                    class="bg-[#151d2b] border border-white/5 rounded-2xl p-7 flex flex-col items-center text-center hover:border-[#F47E24]/30 hover:bg-[#1a2333] transition-all duration-300 group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-[#F47E24]/10 flex items-center justify-center mb-5 group-hover:bg-[#F47E24]/20 transition-colors duration-300">
+                        <i class="fas fa-utensils text-[#F47E24] text-xl"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Sabor</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Cada bocado cuenta una historia. El sabor es
+                        nuestra firma.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- HORARIO DE ATENCIÓN -->
+    <!-- ====================================================== -->
+    <section class="bg-[#0d1117] py-20 px-4 md:px-10">
+        <div class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-12">
+                <span class="text-[#F47E24] uppercase tracking-[0.25em] text-xs font-bold">Cuándo visitarnos</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">
+                    Horario de <span class="text-[#F47E24]">Atención</span>
+                </h2>
+                <div class="w-16 h-1 bg-[#F47E24] rounded-full mx-auto mt-5"></div>
+            </div>
+
+            <div class="bg-[#111827] border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
+
+                <!-- Header row -->
+                <div class="grid grid-cols-2 bg-[#F47E24]/10 border-b border-white/5 px-6 py-4">
+                    <span class="text-[#F47E24] text-xs font-bold uppercase tracking-widest">Día</span>
+                    <span class="text-[#F47E24] text-xs font-bold uppercase tracking-widest">Horario</span>
+                </div>
+
+                <!-- Days -->
+                <div id="schedule-rows">
+                    <div
+                        class="grid grid-cols-2 px-6 py-4 border-b border-white/5 hover:bg-white/3 transition-colors duration-150 group">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>Lunes
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 px-6 py-4 border-b border-white/5 hover:bg-white/3 transition-colors duration-150">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>Martes
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 px-6 py-4 border-b border-white/5 hover:bg-white/3 transition-colors duration-150">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>Miércoles
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 px-6 py-4 border-b border-white/5 hover:bg-white/3 transition-colors duration-150">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>Jueves
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 px-6 py-4 border-b border-white/5 hover:bg-white/3 transition-colors duration-150">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>Viernes
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 px-6 py-4 border-b border-white/5 hover:bg-white/3 transition-colors duration-150">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>Sábado
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-2 px-6 py-4 hover:bg-white/3 transition-colors duration-150">
+                        <span class="text-white font-medium flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-red-400"></span>Domingo
+                        </span>
+                        <span class="text-sm flex items-center gap-2">
+                            <i class="fas fa-clock text-[#F47E24]/40 text-xs"></i>
+                            <span class="text-gray-600 italic">— Próximamente —</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="px-6 py-4 border-t border-white/5 bg-[#0d1117]/40 flex items-center gap-5">
+                    <span class="flex items-center gap-1.5 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Abierto
+                    </span>
+                    <span class="flex items-center gap-1.5 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span> Horario especial
+                    </span>
+                    <span class="flex items-center gap-1.5 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-red-400 inline-block"></span> Cerrado
+                    </span>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-center gap-3 text-gray-600 text-sm">
+                <i class="fas fa-map-pin text-[#F47E24]/50"></i>
+                <span>Ubicados en el Puente — te esperamos</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- CTA -->
+    <!-- ====================================================== -->
+    <section class="bg-[#111827] py-16 px-4 md:px-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div
+                class="bg-gradient-to-br from-[#1a2333] to-[#111827] border border-[#F47E24]/20 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#F47E24]/10 rounded-full blur-[60px] pointer-events-none">
+                </div>
+                <i class="fas fa-coffee text-[#F47E24]/30 text-5xl mb-6 block relative z-10"></i>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 relative z-10">¿Listo para visitarnos?</h2>
+                <p class="text-gray-400 mb-8 text-lg relative z-10">Pasa por el puente y vive la experiencia. Una
+                    taza, una sonrisa, un momento.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                    <a href="./menu.html"
+                        class="inline-flex items-center justify-center gap-2 bg-[#F47E24] hover:bg-[#e06b15] text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:shadow-lg">
+                        <i class="fas fa-book-open text-sm"></i> Ver el Menú
+                    </a>
+                    <a href="./contacto.html"
+                        class="inline-flex items-center justify-center gap-2 border border-white/15 hover:border-[#F47E24]/50 text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:text-[#F47E24]">
+                        <i class="fas fa-envelope text-sm"></i> Contáctanos
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>

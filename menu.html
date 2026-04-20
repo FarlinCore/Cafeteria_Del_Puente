@@ -4,691 +4,970 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>Menú — Del Puente Cafe &amp; Snack</title>
+    <meta name="description" content="Menú completo de Cafetería del Puente.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="container">
-        <header class=" w-full top-0 z-50 lg:px-16 px-4 bg-[#55301c] flex flex-wrap items-center py-2 shadow-lg">
-            <div class="flex-1 flex justify-between items-center">
-                <a href="#" class="text-3xl text-white font-semibold">Menu</a>
+<body class="bg-[#2c1608]">
+
+    <!-- NAVBAR -->
+    <header class="w-full top-0 z-50 lg:px-16 px-4 bg-[#55301c] flex flex-wrap items-center py-2 shadow-lg">
+        <div class="flex-1 flex justify-between items-center">
+            <a href="#" class="text-3xl text-white font-semibold">Menu</a>
+        </div>
+        <label for="menu-toggle" class="pointer-cursor md:hidden block">
+            <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                viewBox="0 0 20 20">
+                <title>Menu Toggle</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+        </label>
+        <input class="hidden" type="checkbox" id="menu-toggle" />
+        <div class="hidden md:flex md:items-center md:w-auto w-full">
+            <nav>
+                <ul class="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors"
+                            href="./index.html">Inicio</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors"
+                            href="./menu.html">Menu</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors"
+                            href="./sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors"
+                            href="./nuestra-gente.html">Nuestra Gente</a></li>
+                    <li><a class="font-semibold py-1 md:px-3 text-[#55301c] md:mb-0 mb-2 rounded-full bg-white hover:bg-[#F47E24] hover:text-white transition-colors"
+                            href="./contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="px-6 lg:px-12 pb-20">
+
+        <!-- ============================== -->
+        <!--  SECCIÓN 1: SALADOS            -->
+        <!-- ============================== -->
+        <section class="pt-14 pb-10" data-section="salados">
+
+            <div class="text-center mb-10">
+                <p class="text-[#F47E24] font-semibold uppercase tracking-widest text-xs mb-1">Nuestros Productos</p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-white">Productos Salados y Picaderas</h2>
+                <div class="w-16 h-1 bg-[#F47E24] mx-auto mt-3 rounded-full"></div>
             </div>
 
-            <label for="menu-toggle" class="pointer-cursor md:hidden block">
-                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                    viewBox="0 0 20 20">
-                    <title>Contacto</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                </svg>
-            </label>
-            <input class="hidden" type="checkbox" id="menu-toggle" />
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 
-            <div class="hidden md:flex md:items-center md:w-auto w-full" id="menu">
-                <nav>
-                    <ul class="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
-                        <li><a class="md:p-4 py-3 px-0 block" href="./index.html">Inicio</a></li>
-                        <li><a class="md:p-4 py-3 px-0 block" href="./menu.html">Menu</a></li>
-                        <li><a class="md:p-4 py-3 px-0 block" href="./sobre-nosotros.html">Sobre Nosotros</a></li>
-                        <li><a class="md:p-4 py-3 px-0 block" href="./nuestra-gente.html">Nuestra Gente</a></li>
-                        <li><a class=" font-semibold py-1 md:p-1 text-[#55301c] md:mb-0 mb-2 rounded-full bg-white"
-                                href="./contacto.html">Contacto</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <section name="card-menu" class=" mb-8 px-12 mx-auto">
-                <article class=" mt-20 max-w-4xl mx-auto px-4 py-8">
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div class="w-full border-t border-[#55301c]"></div>
+                <!-- CARD: Empanadas clásicas -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-001"
+                    data-category="salados" data-name="Empanadas clásicas" data-price="60" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/empanada clasica.jpg"
+                        alt="Empanadas clásicas">
+                    <div class="flex flex-col flex-1">
+                        <!-- RATING ROW -->
+                        <div class="flex items-center justify-between my-3">
+                            <!-- Slots de perfil -->
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <!-- Estrellas + tooltip -->
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
                         </div>
-                        <div class="relative flex justify-center">
-                            <span class="px-3 bg-white  text-lg font-semibold text-[#55301c]">
-                                Productos Salados y picaderas
-                            </span>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Empanadas clásicas</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Pollo crema &nbsp;·&nbsp; Res
+                            mechada</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$60</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
                         </div>
                     </div>
                 </article>
 
-
-
-                <section id="menu-productos-salados"
-                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-4">
-
-                    <article>
-                        <!-- CARD 1 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover"
-                                        src="./images/empanada clasica.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Empanadas clasicas</a>
-                                <p class="text-gray-500 text-sm pb-1">
-                                    Empanadas comunes pero deliciosas
-                                </p>
-                            </div>
-                            <div class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$60.00</span>
-                                </span>
-                            </div>
-                            <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1">Pollo crema | Res mechada</span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <!-- CARD 2 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover"
-                                        src="./images/empanadas de queso calidad.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Empanadas gourmet</a>
-                                <p class="text-gray-500 text-sm pb-1">
-                                    masa rellena de algun ingrediente
-                                </p>
-                            </div>
-                            <div class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$85.00</span>
-                                </span>
-                            </div>
-                            <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1">Pizza | Queso | Pollo</span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <!-- CARD 3 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover"
-                                        src="./images/quipe.webp?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Quipes</a>
-                                <p class="text-gray-500 text-sm pb-1">
-                                    Quipes hechos con calidad, a base de trigo
-                                </p>
-                            </div>
-                            <div class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$60.00</span>
-                                </span>
-                            </div>
-                            <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1">Pollo | Res</span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <!-- CARD 4 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover"
-                                        src="./images/catibia.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Catibias</a>
-                                <p class="text-gray-500 text-sm pb-1">
-                                    Catibias deliciosas
-                                </p>
-                            </div>
-                            <div class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$30.00</span>
-                                </span>
-                            </div>
-                            <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1">Pollo | Queso </span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <!-- CARD 5 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover"
-                                        src="./images/BOLA DE YUCA.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Bolas de yuca</a>
-                                <p class="text-gray-500 text-sm pb-1">
-                                    Bolas de masa hechas en base a yuca rellenas
-                                </p>
-                            </div>
-                            <div class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$60.00</span>
-                                </span>
-                            </div>
-                            <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1">Queso | Pollo y queso </span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <!-- CARD SOLA 7 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover"
-                                        src="./images/croquetas.png?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Croquetas de pollo</a>
-                                <p class="text-gray-500 text-sm">
-                                    croquetas de harina rellenas de pollo
-                                </p>
-                            </div>
-                            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$40.00</span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <!-- CARD SOLA 8 -->
-                        <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                            <a href="#"></a>
-                            <div class="relative"><a href="#">
-                                    <img class="w-full h-44 object-cover" src="./images/chulo.jpg"
-                                        alt="Sunset in the mountains">
-                                    <div
-                                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="px-6 py-4 mb-auto">
-                                <a href="#"
-                                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                    Chulos</a>
-                                <p class="text-gray-500 text-sm">
-                                    chulos rellenos de res
-                                </p>
-                            </div>
-                            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                <span href="#"
-                                    class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                    <span class="ml-1"><strong>Precio:</strong> RD$40.00</span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                </section>
-                <section id="menu-sandwiches" class=" mb-8 px-12 mx-auto">
-                    <article class=" mt-20 max-w-4xl mx-auto px-4 py-8">
-                        <div class="relative">
-                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                <div class="w-full border-t border-[#55301c]"></div>
-                            </div>
-                            <div class="relative flex justify-center">
-                                <span class="px-3 bg-white  text-lg font-semibold text-[#55301c]">
-                                    Sandwiches
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <section name="card-menu" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-4">
-
-                        <article>
-                            <!-- CARD SOLA 1 -->
-                            <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                                <a href="#"></a>
-                                <div class="relative"><a href="#">
-                                        <img class="w-full h-44 object-cover"
-                                            src="./images/tostada jamon y queso.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                            alt="Sunset in the mountains">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 mb-auto">
-                                    <a href="#"
-                                        class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                        Tostada de jamon y queso</a>
-                                    <p class="text-gray-500 text-sm">
-                                        Tostadas hechas en base a pan jamon , queso y adereso
-                                    </p>
-                                </div>
-                                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span href="#"
-                                        class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                        <span class="ml-1"><strong>Precio:</strong> RD$50.00</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article>
-                            <!-- CARD SOLA 2 -->
-                            <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                                <a href="#"></a>
-                                <div class="relative"><a href="#">
-                                        <img class="w-full h-44 object-cover"
-                                            src="./images/TOSTADAS.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                            alt="Sunset in the mountains">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 mb-auto">
-                                    <a href="#"
-                                        class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                        Tostada de pollo</a>
-                                    <p class="text-gray-500 text-sm">
-                                        tostada en base a pan con adereso y pollo
-                                    </p>
-                                </div>
-                                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span href="#"
-                                        class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                        <span class="ml-1"><strong>Precio:</strong> RD$70.00</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article>
-                            <!-- CARD SOLA 3 -->
-                            <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                                <a href="#"></a>
-                                <div class="relative"><a href="#">
-                                        <img class="w-full h-44 object-cover"
-                                            src="./images/TOSTADAS.jpg ?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                            alt="Sunset in the mountains">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 mb-auto">
-                                    <a href="#"
-                                        class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                        Tostada completa</a>
-                                    <p class="text-gray-500 text-sm">
-                                        tostada en base a pan rellenas de lechuga , tomate, adereso y pollo
-                                    </p>
-                                </div>
-                                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span href="#"
-                                        class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                        <span class="ml-1"><strong>Precio:</strong> RD$90.00</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article>
-                            <!-- CARD SOLA 4 -->
-                            <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                                <a href="#"></a>
-                                <div class="relative"><a href="#">
-                                        <img class="w-full h-44 object-cover"
-                                            src="./images/warps.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                            alt="Sunset in the mountains">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 mb-auto">
-                                    <a href="#"
-                                        class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                        Wraps de jamon y queso</a>
-                                    <p class="text-gray-500 text-sm">
-                                        Masa envuelta y rellena
-                                    </p>
-                                </div>
-                                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span href="#"
-                                        class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                        <span class="ml-1"><strong>Precio:</strong> RD$150.00</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article>
-                            <!-- CARD SOLA 5 -->
-                            <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                                <a href="#"></a>
-                                <div class="relative"><a href="#">
-                                        <img class="w-full h-44 object-cover"
-                                            src="./images/Sandwich.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                                            alt="Sunset in the mountains">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 mb-auto">
-                                    <a href="#"
-                                        class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                        Sandwich de jamon y queso</a>
-                                    <p class="text-gray-500 text-sm">
-                                        pan suave relleno
-                                    </p>
-                                </div>
-                                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span href="#"
-                                        class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                        <span class="ml-1"><strong>Precio:</strong> RD$70.00</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article>
-                            <!-- CARD SOLA 6 -->
-                            <div class="rounded-xl overflow-hidden shadow-lg flex flex-col">
-                                <a href="#"></a>
-                                <div class="relative"><a href="#">
-                                        <img class="w-full h-44 object-cover" src="./images/Sandwich completo.jpg"
-                                            alt="Sunset in the mountains">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 mb-auto">
-                                    <a href="#"
-                                        class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
-                                        Sandwich completo</a>
-                                    <p class="text-gray-500 text-sm">
-                                        pan suave relleno de forma completa
-                                    </p>
-                                </div>
-                                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span href="#"
-                                        class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-
-                                        <span class="ml-1"><strong>Precio:</strong> RD$100.00</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                    </section>
-
-                </section>
-                <section id="menu-bebidas" class="mb-16 px-12 mx-auto">
-
-                    <article class="mt-20 max-w-4xl mx-auto px-4 py-8">
-                        <div class="relative">
-                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                <div class="w-full border-t border-[#55301c]"></div>
-                            </div>
-                            <div class="relative flex justify-center">
-                                <span class="px-3 bg-white text-lg font-semibold text-[#55301c]">
-                                    Bebidas Refrescantes
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <section name="card-menu-bebidas"
-                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-6 gap-4">
-
-                        <article>
+                <!-- CARD: Empanadas gourmet -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-002"
+                    data-category="salados" data-name="Empanadas gourmet" data-price="85" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/empanadas de queso calidad.jpg"
+                        alt="Empanadas gourmet">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
                             <div
-                                class="h-full rounded-xl overflow-hidden shadow-lg flex flex-col border border-gray-100">
-                                <div class="relative flex-shrink-0">
-                                    <a href="#">
-                                        <img class="w-full h-44 object-cover object-center" src="./images/JUGO.jpg"
-                                            alt="Jugos Naturales">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute inset-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 flex flex-col flex-grow">
-                                    <a href="#"
-                                        class="font-bold text-lg inline-block hover:text-[#55301c] transition duration-500 ease-in-out mb-2 text-gray-800">
-                                        Jugos Naturales
-                                    </a>
-                                    <p class="text-gray-500 text-sm leading-relaxed">
-                                        Frutas frescas de temporada preparadas al instante.
-                                    </p>
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                                 <div
-                                    class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100 mt-auto border-t border-gray-100">
-                                    <span class="py-1 text-xs text-[#000000]">
-                                        <strong>Precio:</strong> RD$60.00
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article>
-                            <div
-                                class="h-full rounded-xl overflow-hidden shadow-lg flex flex-col border border-gray-100">
-                                <div class="relative flex-shrink-0">
-                                    <a href="#">
-                                        <img class="w-full h-44 object-cover object-center" src="./images/NEVADAS.jpg"
-                                            alt="Nevadas">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute inset-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 flex flex-col flex-grow">
-                                    <a href="#"
-                                        class="font-bold text-lg inline-block hover:text-[#55301c] transition duration-500 ease-in-out mb-2 text-gray-800">
-                                        Nevadas
-                                    </a>
-                                    <p class="text-gray-500 text-sm leading-relaxed">
-                                        Nuestra especialidad cremosa. ¡Elige tu sabor!
-                                    </p>
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                                 <div
-                                    class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100 mt-auto border-t border-gray-100">
-                                    <span class="py-1 text-xs text-[#000000]">
-                                        <strong>Precio:</strong> RD$50.00
-                                    </span>
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                             </div>
-                        </article>
-
-                        <article>
-                            <div
-                                class="h-full rounded-xl overflow-hidden shadow-lg flex flex-col border border-gray-100">
-                                <div class="relative flex-shrink-0">
-                                    <a href="#">
-                                        <img class="w-full h-44 object-cover object-center"
-                                            src="./images/jugo verde.jpg" alt="Jugo Verde">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute inset-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
                                 </div>
-                                <div class="px-6 py-4 flex flex-col flex-grow">
-                                    <a href="#"
-                                        class="font-bold text-lg inline-block hover:text-[#55301c] transition duration-500 ease-in-out mb-2 text-gray-800">
-                                        Jugo Verde
-                                    </a>
-                                    <p class="text-gray-500 text-sm leading-relaxed">
-                                        Opción saludable y llena de energía natural.
-                                    </p>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Empanadas gourmet</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Pizza &nbsp;·&nbsp; Queso
+                            &nbsp;·&nbsp; Pollo</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$85</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Quipes -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-003"
+                    data-category="salados" data-name="Quipes" data-price="60" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/quipe.webp" alt="Quipes">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                                 <div
-                                    class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100 mt-auto border-t border-gray-100">
-                                    <span class="py-1 text-xs text-[#000000]">
-                                        <strong>Precio:</strong> RD$100.00
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article>
-                            <div
-                                class="h-full rounded-xl overflow-hidden shadow-lg flex flex-col border border-gray-100">
-                                <div class="relative flex-shrink-0">
-                                    <a href="#">
-                                        <img class="w-full h-44 object-cover object-center" src="./images/refresco.jpg"
-                                            alt="Refrescos">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute inset-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="px-6 py-4 flex flex-col flex-grow">
-                                    <a href="#"
-                                        class="font-bold text-lg inline-block hover:text-[#55301c] transition duration-500 ease-in-out mb-2 text-gray-800">
-                                        Embotellados
-                                    </a>
-                                    <p class="text-gray-500 text-sm leading-relaxed">
-                                        Refrescos y agua mineral fría.
-                                    </p>
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                                 <div
-                                    class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100 mt-auto border-t border-gray-100">
-                                    <span class="py-1 text-xs font-regular text-gray-900 flex flex-row items-center">
-                                        <span class="ml-1"><strong>Refresco:</strong> RD$35.00</span>
-                                    </span>
-                                </div>
-                                <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span class="py-1 text-xs font-regular text-gray-900 flex flex-row items-center">
-                                        <span class="ml-1"><strong>Agua:</strong> RD$15.00</span>
-                                    </span>
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                             </div>
-                        </article>
-
-                        <article>
-                            <div
-                                class="h-full rounded-xl overflow-hidden shadow-lg flex flex-col border border-gray-100">
-                                <div class="relative flex-shrink-0">
-                                    <a href="#">
-                                        <img class="w-full h-44 object-cover object-center"
-                                            src="./images/tazas de cafe chocar.jpg" alt="Cervezas y Café">
-                                        <div
-                                            class="hover:bg-transparent transition duration-300 absolute inset-0 bg-gray-900 opacity-25">
-                                        </div>
-                                    </a>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
                                 </div>
-                                <div class="px-6 py-4 flex flex-col flex-grow">
-                                    <a href="#"
-                                        class="font-bold text-lg inline-block hover:text-[#55301c] transition duration-500 ease-in-out mb-2 text-gray-800">
-                                        Cervezas y Café
-                                    </a>
-                                    <p class="text-gray-500 text-sm leading-relaxed">
-                                        Variedad de cervezas y café caliente. Gatorade (RD$50).
-                                    </p>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Quipes</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Pollo &nbsp;·&nbsp; Res</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$60</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Catibias -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-004"
+                    data-category="salados" data-name="Catibias" data-price="30" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/catibia.jpg" alt="Catibias">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                                 <div
-                                    class="px-6 pt-3 flex flex-row items-center justify-between bg-gray-100 mt-auto border-t border-gray-100">
-                                    <span class="py-1 text-xs font-regular text-gray-900 flex flex-row items-center">
-                                        <span class="ml-1"><strong>Cervezas:</strong> RD$120 - $150</span>
-                                    </span>
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
-                                <div class="px-6 pb-3 flex flex-row items-center justify-between bg-gray-100">
-                                    <span class="py-1 text-xs font-regular text-gray-900 flex flex-row items-center">
-                                        <span class="ml-1"><strong>Café:</strong> RD$20.00</span>
-                                    </span>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
                                 </div>
                             </div>
-                        </article>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Catibias</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Pollo &nbsp;·&nbsp; Queso</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$30</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
 
-                    </section>
-                </section>
+                <!-- CARD: Bolas de yuca -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-005"
+                    data-category="salados" data-name="Bolas de yuca" data-price="60" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/BOLA DE YUCA.jpg"
+                        alt="Bolas de yuca">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Bolas de yuca</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Queso &nbsp;·&nbsp; Pollo con
+                            queso</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$60</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
 
-        </main>
+                <!-- CARD: Croquetas -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-006"
+                    data-category="salados" data-name="Croquetas de pollo" data-price="40" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/croquetas.png"
+                        alt="Croquetas de pollo">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Croquetas de pollo</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">El favorito de todos</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$40</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
 
-    </div>
+                <!-- CARD: Chulos -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="sal-007"
+                    data-category="salados" data-name="Chulos" data-price="40" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/chulo.jpg" alt="Chulos">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Chulos</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Sabor auténtico dominicano</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$40</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
 
+            </div>
+        </section>
+
+        <div class="border-t border-amber-900/40 max-w-5xl mx-auto"></div>
+
+        <!-- ============================== -->
+        <!--  SECCIÓN 2: SANDWICHES         -->
+        <!-- ============================== -->
+        <section class="pt-14 pb-10" data-section="sandwiches">
+
+            <div class="text-center mb-10">
+                <p class="text-[#F47E24] font-semibold uppercase tracking-widest text-xs mb-1">Del Puente</p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-white">Sandwiches y Tostadas</h2>
+                <div class="w-16 h-1 bg-[#F47E24] mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+
+                <!-- CARD: Tostada jamón y queso -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="san-001"
+                    data-category="sandwiches" data-name="Tostada jamón y queso" data-price="50" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/tostada jamon y queso.jpg"
+                        alt="Tostada de jamón y queso">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Tostada jamón y queso</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Un clásico que no falla</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$50</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Tostada de pollo -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="san-002"
+                    data-category="sandwiches" data-name="Tostada de pollo" data-price="70" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/TOSTADAS.jpg"
+                        alt="Tostada de pollo">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Tostada de pollo</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Con el toque casero del puente</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$70</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Tostada completa -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="san-003"
+                    data-category="sandwiches" data-name="Tostada completa" data-price="90" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/TOSTADAS.jpg"
+                        alt="Tostada completa">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Tostada completa</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Con todo lo que le gusta</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$90</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Wraps -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="san-004"
+                    data-category="sandwiches" data-name="Wraps jamón y queso" data-price="150" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/warps.jpg"
+                        alt="Wraps de jamón y queso">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Wraps jamón y queso</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">La opción diferente y sabrosa</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$150</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Sandwich jamón y queso -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="san-005"
+                    data-category="sandwiches" data-name="Sandwich jamón y queso" data-price="70" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/Sandwich.jpg"
+                        alt="Sandwich de jamón y queso">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Sandwich jamón y queso</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Suave, simple y delicioso</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$70</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Sandwich completo -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="san-006"
+                    data-category="sandwiches" data-name="Sandwich completo" data-price="100" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/Sandwich completo.jpg"
+                        alt="Sandwich completo">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Sandwich completo</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">¡Con todo adentro!</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$100</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <div class="border-t border-amber-900/40 max-w-5xl mx-auto"></div>
+
+        <!-- ============================== -->
+        <!--  SECCIÓN 3: BEBIDAS            -->
+        <!-- ============================== -->
+        <section class="pt-14 pb-20" data-section="bebidas">
+
+            <div class="text-center mb-10">
+                <p class="text-[#F47E24] font-semibold uppercase tracking-widest text-xs mb-1">Para Refrescarte</p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-white">Bebidas Refrescantes</h2>
+                <div class="w-16 h-1 bg-[#F47E24] mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+
+                <!-- CARD: Jugos Naturales -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="beb-001"
+                    data-category="bebidas" data-name="Jugos Naturales" data-price="60" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/JUGO.jpg" alt="Jugos Naturales">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Jugos Naturales</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Del día, según temporada</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$60</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Nevadas -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="beb-002"
+                    data-category="bebidas" data-name="Nevadas" data-price="50" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/NEVADAS.jpg" alt="Nevadas">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Nevadas</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Elige tu sabor favorito</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$50</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Jugo Verde -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="beb-003"
+                    data-category="bebidas" data-name="Jugo Verde" data-price="100" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/jugo verde.jpg" alt="Jugo Verde">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Jugo Verde</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Refrescante y lleno de energía</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$100</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Embotellados -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="beb-004"
+                    data-category="bebidas" data-name="Embotellados" data-price="15" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/refresco.jpg" alt="Embotellados">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Embotellados</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Refresco &nbsp;·&nbsp; Agua
+                            mineral</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$15–$35</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD: Cervezas y Café -->
+                <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden" data-id="beb-005"
+                    data-category="bebidas" data-name="Cervezas y Café" data-price="20" data-rating="0">
+                    <img class="w-full h-40 object-cover object-center" src="./images/tazas de cafe chocar.jpg"
+                        alt="Cervezas y Café">
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-center justify-between my-3">
+                            <div
+                                class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                                <div
+                                    class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                                <div
+                                    class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center">
+                                    <i class="fas fa-user text-amber-900 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
+                                <div class="flex gap-0.5 mb-0.5">
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                    <ion-icon class="text-gray-600 text-sm" name="star-outline"></ion-icon>
+                                </div>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider">-.-</span>
+                                <span
+                                    class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún
+                                    no hay calificaciones</span>
+                            </div>
+                        </div>
+                        <h3
+                            class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">
+                            Cervezas y Café</h3>
+                        <p class="px-3 text-xs text-gray-400 mt-1 mb-4 leading-snug">Presidente &nbsp;·&nbsp; Heineken
+                            &nbsp;·&nbsp; Café</p>
+                        <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                            <span class="text-yellow-400 font-bold text-sm">RD$20–$150</span>
+                            <button
+                                class="text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 

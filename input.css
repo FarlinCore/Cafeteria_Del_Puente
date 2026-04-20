@@ -47,3 +47,8 @@
     position: relative;
     z-index: 2;
 }
+
+/* === MENÚ: TOOLTIP DE CALIFICACIÓN === */
+.rating-block:hover .rating-tooltip {
+    opacity: 1;
+}
