@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global image sizing */
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 /* ESTE ES EL CSS QUE VINO CON EL FRAGMENTO EN UN <style> decidi colocarlo en el input.css */
 /* === CARRUSEL TIPO SLIDE=== */

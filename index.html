@@ -10,6 +10,166 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Mejoras homepage ── */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animaciones fade-in al hacer scroll */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Indicador de scroll del hero */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            animation: bounce-down 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce-down {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        /* Back-to-top button */
+        #btn-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 99;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F47E24, #e06b15);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(244, 126, 36, 0.45);
+            cursor: pointer;
+            border: none;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.25s;
+            pointer-events: none;
+        }
+
+        #btn-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        #btn-top:hover {
+            box-shadow: 0 10px 28px rgba(244, 126, 36, 0.60);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism hover para botones ghost */
+        .glass-hover {
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        .glass-hover:hover {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border-color: rgba(255, 255, 255, 0.80) !important;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 4px 20px rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #ffffff !important;
+        }
+
+        /* ── HERO BANNER (carrusel de fondo) ─────────────────── */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 620px;
+            overflow: hidden;
+        }
+
+        /* Cada slide ocupa todo el contenedor y usa cover */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            /* ← evita el achatamiento */
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+        }
+
+
+        /* Overlay oscuro sobre cada slide */
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.80) 0%,
+                    rgba(0, 0, 0, 0.55) 50%,
+                    rgba(0, 0, 0, 0.80) 100%);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Contenedor del texto central */
+        .hero-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Indicador de scroll — encima del overlay */
+        .scroll-hint {
+            z-index: 3;
+        }
+
+        /* Fuente cursiva del título hero */
+        .font-cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Secciones de producto: altura fija + object-fit */
+        .product-img-fixed {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +177,7 @@
         <section>
             <article id="c-menu">
                 <div class="top-0 left-0 w-full shadow-lg h-8 bg-[#F47E24] z-[60] flex items-center justify-center">
-                    <h6 class="text-xs uppercase tracking-widest text-white font-semibold">Del Puente Cafe y Snack</h6>
+                    <h6 class="text-xs uppercase tracking-widest text-white font-semibold">PRUEBA DE FUNCION</h6>
                 </div>
                 <navbar id="menu"
                     class="fixed top-8 left-0 w-full  text-white z-50 transition-all duration-300 bg-transparent">
@@ -34,7 +194,7 @@
                                 </li>
 
                                 <li class="px-8">
-                                    <a href="./menu.html" class="hover:text-[#F47E24] transition-colors">Menú</a>
+                                    <a href="./menu.php" class="hover:text-[#F47E24] transition-colors">Menú</a>
                                 </li>
 
                                 <li class="px-8">
@@ -51,10 +211,15 @@
                                     <a href="#" class="hover:text-[#F47E24] transition-colors">Información</a>
                                 </li>
                             </div>
-                            <div class="">
-                                <button
-                                    class='py-2 pl-8 pr-8 mr-16 bg-[#F47E24] hover:bg-white hover:text-[#F47E24] transition-colors text-white rounded-3xl font-semibold'
-                                    id="contacto"><a href="./contacto.html">Contact</a></button>
+                            <div class="flex items-center gap-3 mr-16 auth-btns">
+                                <a href="./login.html"
+                                    class="py-2 px-5 border border-white/50 text-white rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm glass-hover">
+                                    <i class="fas fa-sign-in-alt mr-1 text-xs"></i> Iniciar Sesion
+                                </a>
+                                <a href="./registro.html"
+                                    class="py-2 px-5 bg-[#F47E24] hover:bg-white hover:text-[#F47E24] transition-all duration-300 text-white rounded-full text-sm font-semibold shadow-lg shadow-[#F47E24]/30">
+                                    <i class="fas fa-user-plus mr-1 text-xs"></i> Registrarse
+                                </a>
                             </div>
                         </div>
 
@@ -65,8 +230,7 @@
             <!-- ESTE ES UN CARRUSEL DE TIPO SLIDE , BUSCANDO DE UNA PLANTILLA DEL FRAMEWORK TAILWIND -->
             <article class="hero-container">
 
-                <!-- fotos de fondo-->
-                <div class="hero-slide active" style="background-image: url('./images/FONDO_PRINCIPAL.png');"></div>
+                <div class="hero-slide active" style="background-image: url('./images/FONDO_PRINCIPAL.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('./images/fondo_cafe.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('./images/warps.jpg');"></div>
 
@@ -75,8 +239,26 @@
                     <div>
                         <h1 class="font-cursive text-6xl lg:text-8xl font-bold mb-4">Del Puente <span
                                 class="text-[#F47E24]">Cafe & Snack</span></h1>
-                        <p class="text-xl lg:text-2xl font-light tracking-widest uppercase">Tu lugar favorito en Mao</p>
+                        <p class="text-xl lg:text-2xl font-light tracking-widest uppercase mb-8">Tu lugar favorito en
+                            Mao</p>
+                        <!-- CTAs del hero -->
+                        <div class="flex flex-wrap items-center justify-center gap-4">
+                            <a href="./menu.php"
+                                class="min-w-[190px] flex items-center justify-center gap-2 px-8 py-2 bg-[#F47E24] hover:bg-white hover:text-[#F47E24] text-white rounded-full font-semibold text-sm transition-all duration-300 shadow-lg shadow-[#F47E24]/40">
+                                <i class="fas fa-utensils"></i> Ver nuestro Menú
+                            </a>
+                            <a href="./contacto.html"
+                                class="min-w-[190px] flex items-center justify-center gap-2 px-8 py-2 border-2 border-white/60 text-white rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-sm glass-hover">
+                                <i class="fas fa-envelope"></i> Contáctanos
+                            </a>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Indicador scroll -->
+                <div class="scroll-hint" onclick="document.querySelector('main').scrollIntoView({behavior:'smooth'})">
+                    <span class="text-white/55 text-xs tracking-[0.35em] uppercase font-light">Descubrir</span>
+                    <i class="fas fa-chevron-down text-white/50 text-sm"></i>
                 </div>
 
             </article>
@@ -111,8 +293,9 @@
                         <div class="flex justify-between items-center px-36">
                             <div class="pr-14">
                                 <div
-                                    class=" w-auto h-auto object-cover overflow-hidden rounded-md shadow-xl sm:rounded-xl">
+                                    class="w-auto h-auto object-cover overflow-hidden rounded-md shadow-xl sm:rounded-xl">
                                     <img src="./images/HELADO PUENTE.jpg">
+
                                 </div>
                             </div>
                             <div class="w-full pl-14">
@@ -126,7 +309,7 @@
                                 </p>
                                 <button
                                     class="bg-[#F47E24] text-white text-xl font-normal px-4 py-2 rounded-2xl shadow"><a
-                                        href="./menu.html">Ver
+                                        href="./menu.php">Ver
                                         Postres</a>
                                 </button>
                             </div>
@@ -213,7 +396,7 @@
                                         </svg><span class="relative"> Toda nuestra variedad</span></span>
                                 </p>
                                 <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-900"></p>
-                                <a href="./menu.html"
+                                <a href="./menu.php"
                                     class="inline-block px-6 py-3 mt-8 bg-[#F47E24] text-white font-semibold rounded hover:bg-blue-700">
                                     Ver menu completo
                                 </a>
@@ -225,7 +408,7 @@
 
                     <article>
 
-                        <div class="max-w-6xl mt-12 mx-auto relative" id="carousel-container">
+                        <div class="max-w-6xl mt-12 mx-auto relative mb-4" id="carousel-container">
                             <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-10 tracking-tight">
                                 Sigue <span class="text-[#F47E24]">Explorando</span>
                             </h2>
@@ -235,14 +418,14 @@
 
                                     <div class="min-w-full md:min-w-[33.33%] p-4">
                                         <div
-                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:scale-105 hover:shadow-2xl">
+                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-[#F47E24] hover:scale-105 hover:shadow-2xl">
                                             <div
                                                 class="bg-purple-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
                                                 <svg class="w-10 h-10 text-purple-600 group-hover:text-blue-900 transition-colors"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
                                                     </path>
                                                 </svg>
                                             </div>
@@ -256,14 +439,17 @@
 
                                     <div class="min-w-full md:min-w-[33.33%] p-4">
                                         <div
-                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:scale-105 hover:shadow-2xl">
+                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-[#F47E24] hover:scale-105 hover:shadow-2xl">
                                             <div
                                                 class="bg-pink-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
                                                 <svg class="w-10 h-10 text-pink-600 group-hover:text-blue-900 transition-colors"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                                    </path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
                                                     </path>
                                                 </svg>
                                             </div>
@@ -277,14 +463,14 @@
 
                                     <div class="min-w-full md:min-w-[33.33%] p-4">
                                         <div
-                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:scale-105 hover:shadow-2xl">
+                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-[#F47E24] hover:scale-105 hover:shadow-2xl">
                                             <div
                                                 class="bg-orange-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
                                                 <svg class="w-10 h-10 text-orange-600 group-hover:text-blue-900 transition-colors"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z">
+                                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
                                                     </path>
                                                 </svg>
                                             </div>
@@ -299,14 +485,14 @@
 
                                     <div class="min-w-full md:min-w-[33.33%] p-4">
                                         <div
-                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:scale-105 hover:shadow-2xl">
+                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-[#F47E24] hover:scale-105 hover:shadow-2xl">
                                             <div
                                                 class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
                                                 <svg class="w-10 h-10 text-blue-600 group-hover:text-blue-900 transition-colors"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z">
+                                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
                                                     </path>
                                                 </svg>
                                             </div>
@@ -321,21 +507,21 @@
 
                                     <div class="min-w-full md:min-w-[33.33%] p-4">
                                         <div
-                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:scale-105 hover:shadow-2xl">
+                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-orange-600 hover:scale-105 hover:shadow-2xl">
                                             <div
-                                                class="bg-green-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
-                                                <svg class="w-10 h-10 text-green-600 group-hover:text-blue-900 transition-colors"
+                                                class="bg-orange-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
+                                                <svg class="w-10 h-10 text-orange-600 group-hover:text-orange-600 transition-colors"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z">
                                                     </path>
                                                 </svg>
                                             </div>
                                             <h3
                                                 class="text-2xl font-bold mb-3 text-gray-800 group-hover:text-white transition-colors">
                                                 Nuestra Gente</h3>
-                                            <p class="text-gray-500 group-hover:text-blue-100 transition-colors">
+                                            <p class="text-gray-500 group-hover:text-orange-100 transition-colors">
                                                 Ven y observa como la brisa y un snack es todo lo que nuestra gente
                                                 necesita para pasarla bien</p>
                                         </div>
@@ -343,14 +529,14 @@
 
                                     <div class="min-w-full md:min-w-[33.33%] p-4">
                                         <div
-                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:scale-105 hover:shadow-2xl">
+                                            class="group bg-white rounded-2xl shadow-lg p-8 text-center h-full border border-gray-100 cursor-pointer transition-all duration-300 hover:bg-[#F47E24] hover:scale-105 hover:shadow-2xl">
                                             <div
                                                 class="bg-yellow-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-white">
                                                 <svg class="w-10 h-10 text-yellow-600 group-hover:text-blue-900 transition-colors"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
                                                     </path>
                                                 </svg>
                                             </div>
@@ -397,10 +583,30 @@
 
 
             <footer class="w-full bg-gray-200">
+                <!-- Auth CTA Bar -->
+                <div style="background: linear-gradient(to right, #3d1e0b, #55301c);" class="py-6 px-6">
+                    <div class="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-5">
+                        <div class="text-center sm:text-left">
+                            <p class="text-[#F47E24] font-bold text-sm">¿Ya eres parte de nuestra familia?</p>
+                            <p class="text-[#c9a882] text-xs mt-1">Inicia sesión o crea tu cuenta para acceder a
+                                beneficios exclusivos</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0 pr-4">
+                            <a href="./login.html"
+                                class="py-2 px-6 border border-[#F47E24] hover:border-white text-[#F47E24] hover:text-white rounded-full text-xs font-semibold transition-all duration-300 hover:bg-white/10">
+                                <i class="fas fa-sign-in-alt mr-1"></i> Iniciar Sesión
+                            </a>
+                            <a href="./registro.html"
+                                class="py-2 px-6 bg-[#F47E24] hover:bg-[#e06b15] text-white rounded-full text-xs font-semibold transition-all duration-300 shadow-md">
+                                <i class="fas fa-user-plus mr-1"></i> Registrarse
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <!--Grid-->
                     <div
-                        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 py-10 max-sm:max-w-sm max-sm:mx-auto gap-y-8">
+                        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 py-10 max-sm:max-w-sm max-sm:mx-auto gap-y-8">
                         <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
                             <a>
                                 <img src="./images/logo-original.svg" class="h-20 w-20">
@@ -408,7 +614,7 @@
                             <p class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">Comprometidos con
                                 el bienestar y la conformidad de nuestros clientes</p>
                             <a href="./contacto.html"
-                                class="py-2.5 px-5 h-9 block w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white mx-auto transition-all  duration-500 hover:bg-indigo-700 lg:mx-0">
+                                class="py-2.5 px-5 h-9 block w-fit bg-[#F47E24] rounded-full shadow-sm text-xs text-white mx-auto transition-all  duration-500 hover:bg-[#e06b15] lg:mx-0">
                                 Contacto
                             </a>
                         </div>
@@ -443,43 +649,31 @@
                             </ul>
                         </div>
                         <!--End Col-->
-                        <div class="lg:mx-auto text-left">
-                            <h4 class="text-lg text-gray-900 font-medium mb-7">Recursos</h4>
-                            <ul class="text-sm  transition-all duration-500">
-                                <li class="mb-6"><a href="javascript:;"
-                                        class="text-gray-600 hover:text-gray-900">Preguntas frecuentes</a></li>
-                                <li class="mb-6"><a href="javascript:;" class=" text-gray-600 hover:text-gray-900">Mas
-                                        informacion</a></li>
-                                <li class="mb-6"><a href="javascript:;"
-                                        class=" text-gray-600 hover:text-gray-900">Documentación</a></li>
-                                <li><a href="javascript:;" class=" text-gray-600 hover:text-gray-900">Guía de
-                                        usuario</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--End Col-->
-                    <!--Grid-->
-                    <div class="py-7 border-t border-gray-200">
-                        <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
-                            <span class="text-sm text-gray-500 ">©<a href="">Del Puente Cafe y Snack</a> 2026,
-                                All
-                                rights reserved.</span>
-                            <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
+                        <!--Grid-->
+                        <div class="py-7 border-t border-gray-200">
+                            <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
+                                <span class="text-sm text-gray-500 ">©<a href="">Del Puente Cafe y Snack</a> 2026,
+                                    All
+                                    rights reserved.</span>
+                                <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
 
-                                <a href="https://www.instagram.com/delpuentecafe/"
-                                    class="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-indigo-600">
-                                    <svg class="w-[1.25rem] h-[1.125rem] text-white" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.70975 7.93663C4.70975 6.65824 5.76102 5.62163 7.0582 5.62163C8.35537 5.62163 9.40721 6.65824 9.40721 7.93663C9.40721 9.21502 8.35537 10.2516 7.0582 10.2516C5.76102 10.2516 4.70975 9.21502 4.70975 7.93663ZM3.43991 7.93663C3.43991 9.90608 5.05982 11.5025 7.0582 11.5025C9.05658 11.5025 10.6765 9.90608 10.6765 7.93663C10.6765 5.96719 9.05658 4.37074 7.0582 4.37074C5.05982 4.37074 3.43991 5.96719 3.43991 7.93663ZM9.97414 4.22935C9.97408 4.39417 10.0236 4.55531 10.1165 4.69239C10.2093 4.82946 10.3413 4.93633 10.4958 4.99946C10.6503 5.06259 10.8203 5.07916 10.9844 5.04707C11.1484 5.01498 11.2991 4.93568 11.4174 4.81918C11.5357 4.70268 11.6163 4.55423 11.649 4.39259C11.6817 4.23095 11.665 4.06339 11.6011 3.91109C11.5371 3.7588 11.4288 3.6286 11.2898 3.53698C11.1508 3.44536 10.9873 3.39642 10.8201 3.39635H10.8197C10.5955 3.39646 10.3806 3.48424 10.222 3.64043C10.0635 3.79661 9.97434 4.00843 9.97414 4.22935ZM4.21142 13.5892C3.52442 13.5584 3.15101 13.4456 2.90286 13.3504C2.57387 13.2241 2.33914 13.0738 2.09235 12.8309C1.84555 12.588 1.69278 12.3569 1.56527 12.0327C1.46854 11.7882 1.3541 11.4201 1.32287 10.7431C1.28871 10.0111 1.28189 9.79119 1.28189 7.93669C1.28189 6.08219 1.28927 5.86291 1.32287 5.1303C1.35416 4.45324 1.46944 4.08585 1.56527 3.84069C1.69335 3.51647 1.84589 3.28513 2.09235 3.04191C2.3388 2.79869 2.57331 2.64813 2.90286 2.52247C3.1509 2.42713 3.52442 2.31435 4.21142 2.28358C4.95417 2.24991 5.17729 2.24319 7.0582 2.24319C8.9391 2.24319 9.16244 2.25047 9.90582 2.28358C10.5928 2.31441 10.9656 2.42802 11.2144 2.52247C11.5434 2.64813 11.7781 2.79902 12.0249 3.04191C12.2717 3.2848 12.4239 3.51647 12.552 3.84069C12.6487 4.08513 12.7631 4.45324 12.7944 5.1303C12.8285 5.86291 12.8354 6.08219 12.8354 7.93669C12.8354 9.79119 12.8285 10.0105 12.7944 10.7431C12.7631 11.4201 12.6481 11.7881 12.552 12.0327C12.4239 12.3569 12.2714 12.5882 12.0249 12.8309C11.7784 13.0736 11.5434 13.2241 11.2144 13.3504C10.9663 13.4457 10.5928 13.5585 9.90582 13.5892C9.16306 13.6229 8.93994 13.6296 7.0582 13.6296C5.17645 13.6296 4.95395 13.6229 4.21142 13.5892ZM4.15307 1.03424C3.40294 1.06791 2.89035 1.18513 2.4427 1.3568C1.9791 1.53408 1.58663 1.77191 1.19446 2.1578C0.802277 2.54369 0.56157 2.93108 0.381687 3.38797C0.207498 3.82941 0.0885535 4.3343 0.0543922 5.07358C0.0196672 5.81402 0.0117188 6.05074 0.0117188 7.93663C0.0117188 9.82252 0.0196672 10.0592 0.0543922 10.7997C0.0885535 11.539 0.207498 12.0439 0.381687 12.4853C0.56157 12.9419 0.802334 13.3297 1.19446 13.7155C1.58658 14.1012 1.9791 14.3387 2.4427 14.5165C2.89119 14.6881 3.40294 14.8054 4.15307 14.839C4.90479 14.8727 5.1446 14.8811 7.0582 14.8811C8.9718 14.8811 9.212 14.8732 9.96332 14.839C10.7135 14.8054 11.2258 14.6881 11.6737 14.5165C12.137 14.3387 12.5298 14.1014 12.9219 13.7155C13.3141 13.3296 13.5543 12.9419 13.7347 12.4853C13.9089 12.0439 14.0284 11.539 14.062 10.7997C14.0962 10.0587 14.1041 9.82252 14.1041 7.93663C14.1041 6.05074 14.0962 5.81402 14.062 5.07358C14.0278 4.33424 13.9089 3.82913 13.7347 3.38797C13.5543 2.93135 13.3135 2.5443 12.9219 2.1578C12.5304 1.7713 12.137 1.53408 11.6743 1.3568C11.2258 1.18513 10.7135 1.06735 9.96388 1.03424C9.21256 1.00058 8.97236 0.992188 7.05876 0.992188C5.14516 0.992188 4.90479 1.00002 4.15307 1.03424Z"
-                                            fill="currentColor" />
-                                    </svg>
+                                    <a href="https://www.instagram.com/delpuentecafe/"
+                                        class="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-[#F47E24] transition-colors duration-300">
+                                        <svg class="w-[1.25rem] h-[1.125rem] text-white" viewBox="0 0 15 15" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M4.70975 7.93663C4.70975 6.65824 5.76102 5.62163 7.0582 5.62163C8.35537 5.62163 9.40721 6.65824 9.40721 7.93663C9.40721 9.21502 8.35537 10.2516 7.0582 10.2516C5.76102 10.2516 4.70975 9.21502 4.70975 7.93663ZM3.43991 7.93663C3.43991 9.90608 5.05982 11.5025 7.0582 11.5025C9.05658 11.5025 10.6765 9.90608 10.6765 7.93663C10.6765 5.96719 9.05658 4.37074 7.0582 4.37074C5.05982 4.37074 3.43991 5.96719 3.43991 7.93663ZM9.97414 4.22935C9.97408 4.39417 10.0236 4.55531 10.1165 4.69239C10.2093 4.82946 10.3413 4.93633 10.4958 4.99946C10.6503 5.06259 10.8203 5.07916 10.9844 5.04707C11.1484 5.01498 11.2991 4.93568 11.4174 4.81918C11.5357 4.70268 11.6163 4.55423 11.649 4.39259C11.6817 4.23095 11.665 4.06339 11.6011 3.91109C11.5371 3.7588 11.4288 3.6286 11.2898 3.53698C11.1508 3.44536 10.9873 3.39642 10.8201 3.39635H10.8197C10.5955 3.39646 10.3806 3.48424 10.222 3.64043C10.0635 3.79661 9.97434 4.00843 9.97414 4.22935ZM4.21142 13.5892C3.52442 13.5584 3.15101 13.4456 2.90286 13.3504C2.57387 13.2241 2.33914 13.0738 2.09235 12.8309C1.84555 12.588 1.69278 12.3569 1.56527 12.0327C1.46854 11.7882 1.3541 11.4201 1.32287 10.7431C1.28871 10.0111 1.28189 9.79119 1.28189 7.93669C1.28189 6.08219 1.28927 5.86291 1.32287 5.1303C1.35416 4.45324 1.46944 4.08585 1.56527 3.84069C1.69335 3.51647 1.84589 3.28513 2.09235 3.04191C2.3388 2.79869 2.57331 2.64813 2.90286 2.52247C3.1509 2.42713 3.52442 2.31435 4.21142 2.28358C4.95417 2.24991 5.17729 2.24319 7.0582 2.24319C8.9391 2.24319 9.16244 2.25047 9.90582 2.28358C10.5928 2.31441 10.9656 2.42802 11.2144 2.52247C11.5434 2.64813 11.7781 2.79902 12.0249 3.04191C12.2717 3.2848 12.4239 3.51647 12.552 3.84069C12.6487 4.08513 12.7631 4.45324 12.7944 5.1303C12.8285 5.86291 12.8354 6.08219 12.8354 7.93669C12.8354 9.79119 12.8285 10.0105 12.7944 10.7431C12.7631 11.4201 12.6481 11.7881 12.552 12.0327C12.4239 12.3569 12.2714 12.5882 12.0249 12.8309C11.7784 13.0736 11.5434 13.2241 11.2144 13.3504C10.9663 13.4457 10.5928 13.5585 9.90582 13.5892C9.16306 13.6229 8.93994 13.6296 7.0582 13.6296C5.17645 13.6296 4.95395 13.6229 4.21142 13.5892ZM4.15307 1.03424C3.40294 1.06791 2.89035 1.18513 2.4427 1.3568C1.9791 1.53408 1.58663 1.77191 1.19446 2.1578C0.802277 2.54369 0.56157 2.93108 0.381687 3.38797C0.207498 3.82941 0.0885535 4.3343 0.0543922 5.07358C0.0196672 5.81402 0.0117188 6.05074 0.0117188 7.93663C0.0117188 9.82252 0.0196672 10.0592 0.0543922 10.7997C0.0885535 11.539 0.207498 12.0439 0.381687 12.4853C0.56157 12.9419 0.802334 13.3297 1.19446 13.7155C1.58658 14.1012 1.9791 14.3387 2.4427 14.5165C2.89119 14.6881 3.40294 14.8054 4.15307 14.839C4.90479 14.8727 5.1446 14.8811 7.0582 14.8811C8.9718 14.8811 9.212 14.8732 9.96332 14.839C10.7135 14.8054 11.2258 14.6881 11.6737 14.5165C12.137 14.3387 12.5298 14.1014 12.9219 13.7155C13.3141 13.3296 13.5543 12.9419 13.7347 12.4853C13.9089 12.0439 14.0284 11.539 14.062 10.7997C14.0962 10.0587 14.1041 9.82252 14.1041 7.93663C14.1041 6.05074 14.0962 5.81402 14.062 5.07358C14.0278 4.33424 13.9089 3.82913 13.7347 3.38797C13.5543 2.93135 13.3135 2.5443 12.9219 2.1578C12.5304 1.7713 12.137 1.53408 11.6743 1.3568C11.2258 1.18513 10.7135 1.06735 9.96388 1.03424C9.21256 1.00058 8.97236 0.992188 7.05876 0.992188C5.14516 0.992188 4.90479 1.00002 4.15307 1.03424Z"
+                                                fill="currentColor" />
+                                        </svg>
 
-                                </a>
+                                    </a>
+                                    <a href="https://wa.me/18095728853" target="_blank"
+                                        class="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-[#25D366] transition-colors duration-300">
+                                        <i class="fab fa-whatsapp text-white text-base"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
             </footer>
 
@@ -487,6 +681,31 @@
             <script src="carusel.js"></script>
             <script src="dinamismo.js"></script>
             <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+            <script src="./js/session-nav.js"></script>
+
+            <!-- ── Mejoras homepage JS ── -->
+            <button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
+                <i class="fas fa-chevron-up text-sm"></i>
+            </button>
+
+            <script>
+                /* Back-to-top visibility */
+                window.addEventListener('scroll', () => {
+                    document.getElementById('btn-top').classList.toggle('show', window.scrollY > 400);
+                }, { passive: true });
+
+                /* Intersection Observer – fade-in sections */
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+
+                document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+            </script>
 </body>
 
 </html>

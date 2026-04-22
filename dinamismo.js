@@ -21,8 +21,8 @@ window.addEventListener('scroll', () => {
         contacto.classList.add("bg-white", "text-[#55301c]", "hover:bg-[#F47E24]", "hover:text-white");
 
         logo.src = "./images/logo-blanco.svg";
-        logo.classList.add("h-16");
-        logo.classList.remove("h-36");
+        logo.classList.add("h-16", "w-16");
+        logo.classList.remove("h-36", "w-36");
     }
 
 
@@ -37,8 +37,8 @@ window.addEventListener('scroll', () => {
         lista.classList.remove("font-bold");
 
         logo.src = "./images/logo-blanco.svg";
-        logo.classList.add("h-16");
-        logo.classList.remove("h-36");
+        logo.classList.add("h-16", "w-16");
+        logo.classList.remove("h-36", "w-36");
     }
 
 
@@ -53,8 +53,8 @@ window.addEventListener('scroll', () => {
         lista.classList.remove("font-bold");
 
         logo.src = "./images/logo-original-blanco.svg";
-        logo.classList.remove("h-16");
-        logo.classList.add("h-36");
+        logo.classList.remove("h-16", "w-16");
+        logo.classList.add("h-36", "w-36");
 
         contacto.classList.remove("bg-white", "text-[#55301c]", "hover:bg-[#F47E24]", "hover:text-white");
         contacto.classList.add("bg-[#F47E24]", "text-white", "hover:bg-white", "hover:text-[#F47E24]");

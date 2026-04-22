@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión – Cafetería del Puente</title>
+    <meta name="description" content="Inicia sesión en tu cuenta de Cafetería del Puente.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        brand: '#F47E24',
+                        'brand-dark': '#e06b15',
+                        'cafe-900': '#1e0f07',
+                        'cafe-800': '#2c1408',
+                        'cafe-700': '#3d1e0b',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.55s cubic-bezier(0.22,1,0.36,1) both',
+                        'float': 'float 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            from: { opacity: '0', transform: 'translateY(32px)' },
+                            to:   { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0) scale(1)' },
+                            '50%':     { transform: 'translateY(-20px) scale(1.05)' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .input-focus:focus {
+            border-color: #F47E24;
+            box-shadow: 0 0 0 4px rgba(244,126,36,0.12);
+            background: #fff;
+        }
+        .check-custom { appearance: none; }
+        .check-custom:checked {
+            background-color: #F47E24;
+            border-color: #F47E24;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden">
+
+    <!-- Fondo imagen -->
+    <div class="fixed inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style="background-image: url('./images/puente fondo.png');"></div>
+
+    <!-- Overlay degradado -->
+    <div class="fixed inset-0 z-10"
+        style="background: linear-gradient(135deg, rgba(30,15,7,0.90) 0%, rgba(62,27,8,0.78) 50%, rgba(30,15,7,0.92) 100%);"></div>
+
+    <!-- Partículas decorativas -->
+    <div class="fixed w-72 h-72 -top-16 -right-16 rounded-full bg-brand/10 animate-float z-10 pointer-events-none"></div>
+    <div class="fixed w-52 h-52 -bottom-12 -left-12 rounded-full bg-brand/10 z-10 pointer-events-none"
+        style="animation: float 8s ease-in-out 3s infinite;"></div>
+    <div class="fixed w-36 h-36 bottom-1/3 right-1/4 rounded-full bg-brand/8 z-10 pointer-events-none"
+        style="animation: float 8s ease-in-out 5s infinite;"></div>
+
+    <!-- Botón volver -->
+    <a href="./index.html"
+        class="fixed top-5 left-6 z-30 inline-flex items-center gap-2 text-white text-sm font-medium
+               bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full
+               hover:bg-brand/30 hover:border-brand/50 transition-all duration-300">
+        <i class="fas fa-arrow-left text-xs"></i> Volver al inicio
+    </a>
+
+    <!-- Card Login -->
+    <div class="relative z-20 w-full max-w-md px-4 py-8 animate-slide-up">
+        <div class="bg-white rounded-3xl px-10 py-10 shadow-2xl shadow-black/50 ring-1 ring-brand/10">
+
+            <!-- Logo -->
+            <div class="text-center mb-7">
+                <img src="./images/logo-original.svg" alt="Logo Cafetería del Puente"
+                    class="h-16 w-auto mx-auto object-contain"
+                    onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='inline-flex'">
+                <div id="logo-fb"
+                    class="hidden mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-brand to-brand-dark items-center justify-center shadow-lg shadow-brand/30">
+                    <i class="fas fa-coffee text-white text-2xl"></i>
+                </div>
+            </div>
+
+            <!-- Título -->
+            <div class="text-center mb-1">
+                <h1 class="text-2xl font-bold text-cafe-900 tracking-tight">¡Bienvenido de vuelta!</h1>
+                <p class="text-sm text-gray-500 mt-1 font-light">Inicia sesión en tu cuenta</p>
+            </div>
+
+            <!-- Separador -->
+            <div class="h-px bg-gradient-to-r from-transparent via-orange-200 to-transparent my-6"></div>
+
+            <!-- Alerta error -->
+            <div id="alert-box"
+                class="hidden mb-4 flex items-center gap-2 px-4 py-3 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="alert-msg"></span>
+            </div>
+
+            <form id="login-form" method="POST" action="./backend/autenticacion/iniciar_sesion.php" novalidate>
+
+                <!-- Correo o usuario -->
+                <div class="mb-4">
+                    <label for="login-id" class="block text-xs font-semibold text-cafe-700 uppercase tracking-wider mb-2">
+                        Correo electrónico o usuario
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none
+                                     peer-focus:text-brand transition-colors">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input type="text" id="login-id" name="identifier" required
+                            placeholder="ej. juanperez o juan@gmail.com" autocomplete="username"
+                            class="peer w-full pl-10 pr-4 py-3 rounded-full border-2 border-orange-100 bg-orange-50/60
+                                   text-gray-800 placeholder-gray-400 text-sm outline-none transition-all duration-200
+                                   input-focus">
+                    </div>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="mb-2">
+                    <label for="login-pass" class="block text-xs font-semibold text-cafe-700 uppercase tracking-wider mb-2">
+                        Contraseña
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input type="password" id="login-pass" name="password" required
+                            placeholder="Tu contraseña" autocomplete="current-password"
+                            class="w-full pl-10 pr-11 py-3 rounded-full border-2 border-orange-100 bg-orange-50/60
+                                   text-gray-800 placeholder-gray-400 text-sm outline-none transition-all duration-200
+                                   input-focus">
+                        <button type="button" id="toggle-pass"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand text-sm transition-colors bg-none border-none p-1">
+                            <i class="fas fa-eye" id="eye-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recordarme / olvidé -->
+                <div class="flex items-center justify-between mt-3 mb-6">
+                    <label class="flex items-center gap-2 text-xs text-gray-500 cursor-pointer select-none">
+                        <input type="checkbox" id="remember" name="remember"
+                            class="check-custom w-4 h-4 rounded border-2 border-gray-300 cursor-pointer">
+                        Recordarme
+                    </label>
+                    <a href="#" class="text-xs text-brand font-semibold hover:text-brand-dark hover:underline transition-colors">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <!-- Botón -->
+                <button type="submit"
+                    class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand to-brand-dark
+                           text-white font-semibold py-3.5 rounded-full text-base shadow-lg shadow-brand/30
+                           hover:shadow-brand/50 hover:scale-[1.02] active:scale-100 transition-all duration-200">
+                    <i class="fas fa-sign-in-alt text-sm"></i>
+                    Iniciar Sesión
+                </button>
+
+            </form>
+
+            <!-- Pie de la card -->
+            <p class="text-center mt-6 text-sm text-gray-500">
+                ¿No tienes una cuenta?
+                <a href="./registro.html" class="text-brand font-semibold hover:text-brand-dark hover:underline transition-colors">
+                    Regístrate aquí
+                </a>
+            </p>
+
+        </div>
+    </div>
+
+    <script>
+        /* Mensajes de error según ?error= en la URL */
+        const errores = {
+            campos_vacios:        'Por favor completa todos los campos.',
+            credenciales_invalidas:'Correo/usuario o contraseña incorrectos.',
+            cuenta_inactiva:      'Tu cuenta está desactivada. Contacta al administrador.'
+        };
+        function mostrarAlerta(msg) {
+            const box = document.getElementById('alert-box');
+            document.getElementById('alert-msg').textContent = msg;
+            box.classList.remove('hidden');
+            box.classList.add('flex');
+        }
+        const params = new URLSearchParams(window.location.search);
+        const err    = params.get('error');
+        if (err && errores[err]) mostrarAlerta(errores[err]);
+
+        /* Toggle contraseña */
+        document.getElementById('toggle-pass').addEventListener('click', function () {
+            const input = document.getElementById('login-pass');
+            const icon  = document.getElementById('eye-icon');
+            input.type = input.type === 'password' ? 'text' : 'password';
+            icon.className = input.type === 'text' ? 'fas fa-eye-slash' : 'fas fa-eye';
+        });
+
+        /* Validación cliente antes de enviar */
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            const id   = document.getElementById('login-id').value.trim();
+            const pass = document.getElementById('login-pass').value;
+            if (!id)   { e.preventDefault(); mostrarAlerta('Ingresa tu correo electrónico o usuario.'); return; }
+            if (!pass) { e.preventDefault(); mostrarAlerta('Ingresa tu contraseña.'); return; }
+        });
+    </script>
+
+</body>
+</html>
