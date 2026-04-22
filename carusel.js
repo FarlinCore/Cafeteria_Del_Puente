@@ -23,12 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = dotsContainer.children;
 
     function updateCarousel() {
-
-        const cardWidth = items[0].getBoundingClientRect().width;
-
-
-        track.style.transform = `translateX(-${index * cardWidth}px)`;
-
+        const offset = (-index / itemsPerView) * 100;
+        track.style.transform = `translateX(${offset}%)`;
 
         Array.from(dots).forEach((dot, i) => {
             dot.className = `h-3 rounded-full transition-all duration-300 ${i === index ? 'bg-[#F47E24] w-8' : 'bg-gray-300 w-3'}`;
