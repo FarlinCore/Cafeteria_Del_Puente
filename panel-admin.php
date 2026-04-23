@@ -93,6 +93,26 @@ try {
 } catch(Exception $e) {}
 
 $categorias_disponibles = ['salados','sandwiches','bebidas','postres','otros'];
+
+// ── Mensajes de contacto ────────────────────────────────────────────
+$mensajes_contacto = [];
+$mensajes_no_leidos = 0;
+try {
+    $mensajes_contacto = $pdo->query("
+        SELECT * FROM mensajes_contacto WHERE archivado = 0 ORDER BY fecha DESC
+    ")->fetchAll();
+    $mensajes_no_leidos = (int)$pdo->query("SELECT COUNT(*) FROM mensajes_contacto WHERE leido = 0 AND archivado = 0")->fetchColumn();
+} catch (PDOException $e) {}
+
+// ── Fotos pendientes ───────────────────────────────────────────────
+$fotos_pendientes = [];
+$fotos_count = 0;
+try {
+    $fotos_pendientes = $pdo->query("
+        SELECT * FROM fotos_clientes ORDER BY fecha_envio DESC
+    ")->fetchAll();
+    $fotos_count = (int)$pdo->query("SELECT COUNT(*) FROM fotos_clientes WHERE estado = 'pendiente'")->fetchColumn();
+} catch (PDOException $e) {}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -234,6 +254,20 @@ $categorias_disponibles = ['salados','sandwiches','bebidas','postres','otros'];
             <iconify-icon icon="solar:chart-bold-duotone"></iconify-icon><span>Economia</span>
         </a>
 
+        <div class="nav-section">Comunicaciones</div>
+        <a onclick="switchView('mensajes')" class="nav-item" id="nav-mensajes">
+            <iconify-icon icon="solar:letter-bold-duotone"></iconify-icon><span>Mensajes</span>
+            <?php if ($mensajes_no_leidos > 0): ?>
+            <span class="ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center leading-none flex-shrink-0"><?= min($mensajes_no_leidos,99) ?></span>
+            <?php endif; ?>
+        </a>
+        <a onclick="switchView('fotos')" class="nav-item" id="nav-fotos">
+            <iconify-icon icon="solar:gallery-bold-duotone"></iconify-icon><span>Fotos clientes</span>
+            <?php if ($fotos_count > 0): ?>
+            <span class="ml-auto bg-amber-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center leading-none flex-shrink-0"><?= min($fotos_count,99) ?></span>
+            <?php endif; ?>
+        </a>
+
         <div class="nav-section">Sitio web</div>
         <a href="./menu.php" class="nav-item opacity-70 hover:opacity-100">
             <iconify-icon icon="solar:book-2-bold-duotone"></iconify-icon><span>Ver menu</span>
@@ -241,7 +275,7 @@ $categorias_disponibles = ['salados','sandwiches','bebidas','postres','otros'];
         <a href="./index.html" class="nav-item opacity-70 hover:opacity-100">
             <iconify-icon icon="solar:global-bold-duotone"></iconify-icon><span>Ver sitio</span>
         </a>
-        <a href="./backend/migration/configurar_bd.php" class="nav-item opacity-50 hover:opacity-80 text-yellow-400" target="_blank">
+        <a href="./backend/migration/crear_tablas_nuevas.php" class="nav-item opacity-50 hover:opacity-80 text-yellow-400" target="_blank">
             <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon><span>Migracion BD</span>
         </a>
     </div>
@@ -752,6 +786,112 @@ $categorias_disponibles = ['salados','sandwiches','bebidas','postres','otros'];
             </div>
         </div>
 
+        <!-- ══ MENSAJES DE CONTACTO ════════════════════════════════════ -->
+        <div id="view-mensajes" class="content-area max-w-[1400px] mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-[var(--text-main)] m-0">Mensajes de Contacto</h1>
+                <p class="text-[var(--text-tertiary)] text-sm font-medium mt-1"><?= count($mensajes_contacto) ?> mensaje(s) activos &middot; <?= $mensajes_no_leidos ?> sin leer</p>
+            </div>
+            <?php if (empty($mensajes_contacto)): ?>
+            <div class="card p-12 text-center">
+                <iconify-icon icon="solar:letter-bold-duotone" class="text-[var(--text-tertiary)]" width="48"></iconify-icon>
+                <p class="text-[var(--text-tertiary)] mt-4 font-medium">No hay mensajes de contacto aún.</p>
+            </div>
+            <?php else: ?>
+            <div class="card overflow-hidden">
+                <table class="w-full text-sm">
+                    <thead class="bg-[var(--bg)] border-b border-[var(--border-light)]">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-[var(--text-tertiary)] font-semibold text-xs uppercase">Nombre</th>
+                            <th class="px-4 py-3 text-left text-[var(--text-tertiary)] font-semibold text-xs uppercase">Correo</th>
+                            <th class="px-4 py-3 text-left text-[var(--text-tertiary)] font-semibold text-xs uppercase">Asunto</th>
+                            <th class="px-4 py-3 text-left text-[var(--text-tertiary)] font-semibold text-xs uppercase">Mensaje</th>
+                            <th class="px-4 py-3 text-left text-[var(--text-tertiary)] font-semibold text-xs uppercase">Fecha</th>
+                            <th class="px-4 py-3 text-left text-[var(--text-tertiary)] font-semibold text-xs uppercase">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[var(--border-light)]">
+                        <?php foreach ($mensajes_contacto as $m): ?>
+                        <tr id="msg-row-<?= $m['id_mensaje'] ?>" class="hover:bg-[var(--bg)] transition-colors <?= !$m['leido'] ? 'bg-blue-50' : '' ?>">
+                            <td class="px-4 py-3 font-semibold text-[var(--text-main)]">
+                                <?php if (!$m['leido']): ?><span class="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span><?php endif; ?>
+                                <?= htmlspecialchars($m['nombre']) ?>
+                            </td>
+                            <td class="px-4 py-3 text-[var(--text-secondary)]"><a href="mailto:<?= htmlspecialchars($m['correo']) ?>" class="hover:text-[var(--primary)]"><?= htmlspecialchars($m['correo']) ?></a></td>
+                            <td class="px-4 py-3 text-[var(--text-secondary)]"><?= htmlspecialchars($m['asunto'] ?? '—') ?></td>
+                            <td class="px-4 py-3 text-[var(--text-secondary)] max-w-[240px]">
+                                <div class="truncate" title="<?= htmlspecialchars($m['mensaje']) ?>"><?= htmlspecialchars($m['mensaje']) ?></div>
+                            </td>
+                            <td class="px-4 py-3 text-[var(--text-tertiary)] text-xs whitespace-nowrap"><?= date('d/m/Y H:i', strtotime($m['fecha'])) ?></td>
+                            <td class="px-4 py-3">
+                                <div class="flex gap-2">
+                                    <?php if (!$m['leido']): ?>
+                                    <button onclick="gestionarMsg(<?= $m['id_mensaje'] ?>,'marcar_leido')" class="btn-sm bg-blue-50 text-blue-600 hover:bg-blue-100" title="Marcar leído">
+                                        <iconify-icon icon="solar:eye-bold-duotone" width="14"></iconify-icon>
+                                    </button>
+                                    <?php endif; ?>
+                                    <button onclick="gestionarMsg(<?= $m['id_mensaje'] ?>,'archivar')" class="btn-sm bg-amber-50 text-amber-600 hover:bg-amber-100" title="Archivar">
+                                        <iconify-icon icon="solar:archive-bold-duotone" width="14"></iconify-icon>
+                                    </button>
+                                    <button onclick="gestionarMsg(<?= $m['id_mensaje'] ?>,'eliminar')" class="btn-sm bg-red-50 text-red-500 hover:bg-red-100" title="Eliminar">
+                                        <iconify-icon icon="solar:trash-bin-trash-bold-duotone" width="14"></iconify-icon>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php endif; ?>
+        </div>
+
+        <!-- ══ FOTOS DE CLIENTES ═════════════════════════════════════════ -->
+        <div id="view-fotos" class="content-area max-w-[1400px] mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-[var(--text-main)] m-0">Fotos de Clientes</h1>
+                <p class="text-[var(--text-tertiary)] text-sm font-medium mt-1"><?= count($fotos_pendientes) ?> foto(s) enviadas &middot; <?= $fotos_count ?> pendiente(s) de revisión</p>
+            </div>
+            <?php if (empty($fotos_pendientes)): ?>
+            <div class="card p-12 text-center">
+                <iconify-icon icon="solar:gallery-bold-duotone" class="text-[var(--text-tertiary)]" width="48"></iconify-icon>
+                <p class="text-[var(--text-tertiary)] mt-4 font-medium">No hay fotos enviadas aún.</p>
+                <p class="text-[var(--text-tertiary)] text-sm mt-2">Las fotos que los clientes envíen desde "Nuestra Gente" aparecerán aquí.</p>
+            </div>
+            <?php else: ?>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <?php foreach ($fotos_pendientes as $f): ?>
+                <div id="foto-card-<?= $f['id_foto'] ?>" class="card overflow-hidden">
+                    <div class="relative h-40 bg-[var(--bg)]">
+                        <img src="<?= htmlspecialchars($f['ruta_imagen']) ?>" alt="Foto cliente" class="w-full h-full object-cover">
+                        <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-bold <?= $f['estado']==='pendiente'?'bg-amber-100 text-amber-700':($f['estado']==='aprobada'?'bg-green-100 text-green-700':'bg-red-100 text-red-700') ?>">
+                            <?= ucfirst($f['estado']) ?>
+                        </span>
+                    </div>
+                    <div class="p-3">
+                        <p class="text-[var(--text-main)] font-semibold text-sm truncate"><?= htmlspecialchars($f['nombre_envio'] ?? 'Anónimo') ?></p>
+                        <p class="text-[var(--text-tertiary)] text-xs mt-0.5"><?= date('d/m/Y', strtotime($f['fecha_envio'])) ?></p>
+                        <?php if ($f['estado'] === 'pendiente'): ?>
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="gestionarFoto(<?= $f['id_foto'] ?>,'aprobar')" class="btn-sm bg-green-50 text-green-600 hover:bg-green-100 flex-1 text-xs">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" width="13"></iconify-icon> Aprobar
+                            </button>
+                            <button onclick="gestionarFoto(<?= $f['id_foto'] ?>,'rechazar')" class="btn-sm bg-red-50 text-red-500 hover:bg-red-100 flex-1 text-xs">
+                                <iconify-icon icon="solar:close-circle-bold-duotone" width="13"></iconify-icon> Rechazar
+                            </button>
+                        </div>
+                        <?php else: ?>
+                        <button onclick="gestionarFoto(<?= $f['id_foto'] ?>,'eliminar')" class="btn-sm bg-red-50 text-red-500 hover:bg-red-100 w-full mt-2 text-xs">
+                            <iconify-icon icon="solar:trash-bin-trash-bold-duotone" width="13"></iconify-icon> Eliminar
+                        </button>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+
     </div><!-- /main-scroll -->
 </main>
 
@@ -778,9 +918,19 @@ $categorias_disponibles = ['salados','sandwiches','bebidas','postres','otros'];
     </div>
 </div>
 
+</main>
+
+<!-- Toast -->
+<div id="toast-admin" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="bg-[var(--text-main)] text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-2xl flex items-center gap-2.5">
+        <iconify-icon id="toast-icon" icon="solar:check-circle-bold-duotone" class="text-[var(--primary)]" width="18"></iconify-icon>
+        <span id="toast-msg">OK</span>
+    </div>
+</div>
+
 <script>
-const VIEWS = ['dashboard','pedidos','usuarios','inventario','productos','economia'];
-const TITLES = {dashboard:'Dashboard',pedidos:'Gestion de pedidos',usuarios:'Usuarios',inventario:'Inventario',productos:'Administrar productos',economia:'Economia'};
+const VIEWS = ['dashboard','pedidos','usuarios','inventario','productos','economia','mensajes','fotos'];
+const TITLES = {dashboard:'Dashboard',pedidos:'Gestion de pedidos',usuarios:'Usuarios',inventario:'Inventario',productos:'Administrar productos',economia:'Economia',mensajes:'Mensajes de contacto',fotos:'Fotos de clientes'};
 
 function switchView(v){
     VIEWS.forEach(id=>{document.getElementById('view-'+id)?.classList.remove('active');document.getElementById('nav-'+id)?.classList.remove('active');});
@@ -998,6 +1148,47 @@ window.addEventListener('load',()=>{
 /* ── HASH ROUTING ───────────────────────────────────── */
 const h=location.hash.replace('#','');
 if(VIEWS.includes(h))switchView(h);
+
+/* ── MENSAJES DE CONTACTO ──────────────────────────── */
+function gestionarMsg(id, accion) {
+    if (accion === 'eliminar' && !confirm('¿Eliminar este mensaje?')) return;
+    const fd = new FormData();
+    fd.append('accion', accion);
+    fd.append('id_mensaje', id);
+    fetch('./backend/admin/gestionar_mensaje.php', { method: 'POST', body: fd })
+        .then(r => r.json())
+        .then(d => {
+            if (d.ok) {
+                if (accion === 'eliminar' || accion === 'archivar') {
+                    document.getElementById('msg-row-' + id)?.remove();
+                } else if (accion === 'marcar_leido') {
+                    const row = document.getElementById('msg-row-' + id);
+                    if (row) { row.classList.remove('bg-blue-50'); }
+                }
+                toast('Acción realizada correctamente');
+            } else { toast(d.error || 'Error', 'error'); }
+        }).catch(() => toast('Error de conexión', 'error'));
+}
+
+/* ── FOTOS DE CLIENTES ─────────────────────────────── */
+function gestionarFoto(id, accion) {
+    if (accion === 'eliminar' && !confirm('¿Eliminar esta foto?')) return;
+    const fd = new FormData();
+    fd.append('accion', accion);
+    fd.append('id_foto', id);
+    fetch('./backend/admin/gestionar_foto.php', { method: 'POST', body: fd })
+        .then(r => r.json())
+        .then(d => {
+            if (d.ok) {
+                if (accion === 'eliminar') {
+                    document.getElementById('foto-card-' + id)?.remove();
+                } else {
+                    location.reload();
+                }
+                toast('Acción realizada correctamente');
+            } else { toast(d.error || 'Error', 'error'); }
+        }).catch(() => toast('Error de conexión', 'error'));
+}
 </script>
 </body>
 </html>

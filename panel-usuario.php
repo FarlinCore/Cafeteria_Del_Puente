@@ -227,7 +227,7 @@ try {
             <iconify-icon icon="solar:book-2-bold-duotone"></iconify-icon>
             <span>Ver menu</span>
         </a>
-        <a href="./sobre-nosotros.html" class="nav-item opacity-70 hover:opacity-100">
+        <a href="./sobre-nosotros.php" class="nav-item opacity-70 hover:opacity-100">
             <iconify-icon icon="solar:info-circle-bold-duotone"></iconify-icon>
             <span>Sobre nosotros</span>
         </a>

@@ -93,7 +93,7 @@ $rol_user    = $_SESSION['rol']    ?? 'usuario';
                 <ul class="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors" href="./index.html">Inicio</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors" href="./menu.php">Menu</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors" href="./sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors" href="./sobre-nosotros.php">Sobre Nosotros</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors" href="./nuestra-gente.html">Nuestra Gente</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors" href="./contacto.html">Contacto</a></li>
                 </ul>
@@ -199,6 +199,9 @@ $rol_user    = $_SESSION['rol']    ?? 'usuario';
                          data-tipo="<?= $prod['tipo_stock'] ?>"
                          data-stock="<?= $esIlim ? 999 : $stock ?>">
 
+                    <!-- Indicador de stock -->
+                    <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-white <?= $agotado ? 'bg-red-500' : 'bg-green-500' ?> z-10"></div>
+
                     <?php if ($agotado): ?>
                     <div class="stock-agotado-overlay">
                         <span class="badge-agotado-card"><i class="fas fa-times mr-1"></i>Agotado</span>
@@ -228,16 +231,16 @@ $rol_user    = $_SESSION['rol']    ?? 'usuario';
                                 <div class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
                             </div>
                             <!-- Calificaciones -->
-                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-default select-none">
-                                <div class="flex gap-1 mb-0.5">
-                                    <i class="far fa-star text-gray-500 text-xs"></i>
-                                    <i class="far fa-star text-gray-500 text-xs"></i>
-                                    <i class="far fa-star text-gray-500 text-xs"></i>
-                                    <i class="far fa-star text-gray-500 text-xs"></i>
-                                    <i class="far fa-star text-gray-500 text-xs"></i>
+                            <div class="rating-block relative flex flex-col items-end pr-2 cursor-pointer select-none" data-product-id="<?= $prod['id_producto'] ?>">
+                                <div class="flex gap-1 mb-0.5 stars">
+                                    <i class="far fa-star text-gray-500 text-xs star" data-rating="1"></i>
+                                    <i class="far fa-star text-gray-500 text-xs star" data-rating="2"></i>
+                                    <i class="far fa-star text-gray-500 text-xs star" data-rating="3"></i>
+                                    <i class="far fa-star text-gray-500 text-xs star" data-rating="4"></i>
+                                    <i class="far fa-star text-gray-500 text-xs star" data-rating="5"></i>
                                 </div>
-                                <span class="text-gray-500 font-medium text-xs tracking-wider mt-0.5">-.-</span>
-                                <span class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Aún no hay calificaciones</span>
+                                <span class="text-gray-500 font-medium text-xs tracking-wider mt-0.5 rating-text">-.-</span>
+                                <span class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Haz clic para calificar</span>
                             </div>
                         </div>
 
@@ -273,6 +276,243 @@ $rol_user    = $_SESSION['rol']    ?? 'usuario';
             </div>
         </section>
     <?php endforeach; ?>
+
+    <!-- SECCIÓN POSTRES MANUAL -->
+    <section class="pt-14 pb-10" id="postres-manual" data-section="postres">
+        <div class="text-center mb-10">
+            <p class="text-[#F47E24] font-semibold uppercase tracking-widest text-xs mb-1">El toque dulce</p>
+            <h2 class="text-3xl lg:text-4xl font-bold text-white">Postres y Dulces</h2>
+            <div class="w-16 h-1 bg-[#F47E24] mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+
+            <!-- HELADO -->
+            <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden relative"
+                     data-id="postre-1"
+                     data-name="Helado"
+                     data-price="150"
+                     data-desc="Cremoso y refrescante"
+                     data-tipo="stock"
+                     data-stock="999">
+
+                <!-- Indicador de stock -->
+                <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-white bg-green-500 z-10"></div>
+
+                <!-- Imagen placeholder -->
+                <div class="w-full h-40 bg-[#3d1e0b] flex items-center justify-center">
+                    <i class="fas fa-ice-cream text-[#F47E24] text-3xl opacity-30"></i>
+                </div>
+
+                <div class="flex flex-col flex-1">
+                    <!-- Rating row -->
+                    <div class="flex items-center justify-between my-3">
+                        <div class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                            <div class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                        </div>
+                        <!-- Calificaciones -->
+                        <div class="rating-block relative flex flex-col items-end pr-2 cursor-pointer select-none" data-product-id="postre-1">
+                            <div class="flex gap-1 mb-0.5 stars">
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="1"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="2"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="3"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="4"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="5"></i>
+                            </div>
+                            <span class="text-gray-500 font-medium text-xs tracking-wider mt-0.5 rating-text">-.-</span>
+                            <span class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Haz clic para calificar</span>
+                        </div>
+                    </div>
+
+                    <!-- Nombre -->
+                    <h3 class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">Helado</h3>
+
+                    <!-- Descripción -->
+                    <p class="px-3 text-xs text-gray-500 mt-1 mb-4 italic leading-snug">Cremoso y refrescante</p>
+
+                    <!-- Precio y botón -->
+                    <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                        <span class="text-yellow-400 font-bold text-sm">RD$150</span>
+                        <button class="btn-anadir text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200"
+                                data-action="anadir">
+                            <i class="fas fa-shopping-cart mr-1 text-xs"></i> Anadir
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- BROWNIE -->
+            <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden relative"
+                     data-id="postre-2"
+                     data-name="Brownie"
+                     data-price="180"
+                     data-desc="Chocolate intenso"
+                     data-tipo="stock"
+                     data-stock="999">
+
+                <!-- Indicador de stock -->
+                <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-white bg-green-500 z-10"></div>
+
+                <!-- Imagen placeholder -->
+                <div class="w-full h-40 bg-[#3d1e0b] flex items-center justify-center">
+                    <i class="fas fa-ice-cream text-[#F47E24] text-3xl opacity-30"></i>
+                </div>
+
+                <div class="flex flex-col flex-1">
+                    <!-- Rating row -->
+                    <div class="flex items-center justify-between my-3">
+                        <div class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                            <div class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                        </div>
+                        <!-- Calificaciones -->
+                        <div class="rating-block relative flex flex-col items-end pr-2 cursor-pointer select-none" data-product-id="postre-2">
+                            <div class="flex gap-1 mb-0.5 stars">
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="1"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="2"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="3"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="4"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="5"></i>
+                            </div>
+                            <span class="text-gray-500 font-medium text-xs tracking-wider mt-0.5 rating-text">-.-</span>
+                            <span class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Haz clic para calificar</span>
+                        </div>
+                    </div>
+
+                    <!-- Nombre -->
+                    <h3 class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">Brownie</h3>
+
+                    <!-- Descripción -->
+                    <p class="px-3 text-xs text-gray-500 mt-1 mb-4 italic leading-snug">Chocolate intenso y textura</p>
+
+                    <!-- Precio y botón -->
+                    <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                        <span class="text-yellow-400 font-bold text-sm">RD$180</span>
+                        <button class="btn-anadir text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200"
+                                data-action="anadir">
+                            <i class="fas fa-shopping-cart mr-1 text-xs"></i> Anadir
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CHOCOBROWNE -->
+            <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden relative"
+                     data-id="postre-3"
+                     data-name="Chocobrowne"
+                     data-price="200"
+                     data-desc="Chocolate y brownie"
+                     data-tipo="stock"
+                     data-stock="999">
+
+                <!-- Indicador de stock -->
+                <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-white bg-green-500 z-10"></div>
+
+                <!-- Imagen placeholder -->
+                <div class="w-full h-40 bg-[#3d1e0b] flex items-center justify-center">
+                    <i class="fas fa-ice-cream text-[#F47E24] text-3xl opacity-30"></i>
+                </div>
+
+                <div class="flex flex-col flex-1">
+                    <!-- Rating row -->
+                    <div class="flex items-center justify-between my-3">
+                        <div class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                            <div class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                        </div>
+                        <!-- Calificaciones -->
+                        <div class="rating-block relative flex flex-col items-end pr-2 cursor-pointer select-none" data-product-id="postre-3">
+                            <div class="flex gap-1 mb-0.5 stars">
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="1"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="2"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="3"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="4"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="5"></i>
+                            </div>
+                            <span class="text-gray-500 font-medium text-xs tracking-wider mt-0.5 rating-text">-.-</span>
+                            <span class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Haz clic para calificar</span>
+                        </div>
+                    </div>
+
+                    <!-- Nombre -->
+                    <h3 class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">Chocobrowne</h3>
+
+                    <!-- Descripción -->
+                    <p class="px-3 text-xs text-gray-500 mt-1 mb-4 italic leading-snug">Combinación perfecta</p>
+
+                    <!-- Precio y botón -->
+                    <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                        <span class="text-yellow-400 font-bold text-sm">RD$200</span>
+                        <button class="btn-anadir text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200"
+                                data-action="anadir">
+                            <i class="fas fa-shopping-cart mr-1 text-xs"></i> Anadir
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- FLAN -->
+            <article class="flex flex-col rounded-xl shadow-xl bg-[#4a2010] group overflow-hidden relative"
+                     data-id="postre-4"
+                     data-name="Flan"
+                     data-price="120"
+                     data-desc="Suave y tradicional"
+                     data-tipo="stock"
+                     data-stock="999">
+
+                <!-- Indicador de stock -->
+                <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-white bg-green-500 z-10"></div>
+
+                <!-- Imagen placeholder -->
+                <div class="w-full h-40 bg-[#3d1e0b] flex items-center justify-center">
+                    <i class="fas fa-ice-cream text-[#F47E24] text-3xl opacity-30"></i>
+                </div>
+
+                <div class="flex flex-col flex-1">
+                    <!-- Rating row -->
+                    <div class="flex items-center justify-between my-3">
+                        <div class="relative w-5/12 h-8 flex items-center justify-end border-l-4 border-[#F47E24] rounded-tr-full rounded-br-full bg-[#6b3020]">
+                            <div class="absolute right-1 z-30 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-4 z-20 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                            <div class="absolute right-7 z-10 w-6 h-6 rounded-full border-2 border-amber-900 bg-stone-800 flex items-center justify-center"><i class="fas fa-user text-amber-900 text-xs"></i></div>
+                        </div>
+                        <!-- Calificaciones -->
+                        <div class="rating-block relative flex flex-col items-end pr-2 cursor-pointer select-none" data-product-id="postre-4">
+                            <div class="flex gap-1 mb-0.5 stars">
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="1"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="2"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="3"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="4"></i>
+                                <i class="far fa-star text-gray-500 text-xs star" data-rating="5"></i>
+                            </div>
+                            <span class="text-gray-500 font-medium text-xs tracking-wider mt-0.5 rating-text">-.-</span>
+                            <span class="rating-tooltip absolute right-0 bottom-full mb-1 bg-stone-900 text-gray-400 text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150 whitespace-nowrap pointer-events-none z-50">Haz clic para calificar</span>
+                        </div>
+                    </div>
+
+                    <!-- Nombre -->
+                    <h3 class="px-3 text-lg font-semibold text-white group-hover:text-[#F47E24] transition-colors duration-200 leading-tight">Flan</h3>
+
+                    <!-- Descripción -->
+                    <p class="px-3 text-xs text-gray-500 mt-1 mb-4 italic leading-snug">Suave y tradicional</p>
+
+                    <!-- Precio y botón -->
+                    <div class="mt-auto px-3 pb-5 flex items-center justify-between">
+                        <span class="text-yellow-400 font-bold text-sm">RD$120</span>
+                        <button class="btn-anadir text-[#F47E24] text-xs font-bold py-1 px-3 border border-[#F47E24] rounded-full uppercase hover:bg-[#F47E24] hover:text-white transition-colors duration-200"
+                                data-action="anadir">
+                            <i class="fas fa-shopping-cart mr-1 text-xs"></i> Anadir
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
 
     </main>
 
@@ -523,7 +763,7 @@ $rol_user    = $_SESSION['rol']    ?? 'usuario';
                 <h4 class="text-lg text-gray-900 font-medium mb-7">Índice</h4>
                 <ul class="text-sm transition-all duration-500">
                     <li class="mb-6"><a href="./index.html" class="text-gray-600 hover:text-gray-900">Inicio</a></li>
-                    <li class="mb-6"><a href="./sobre-nosotros.html" class="text-gray-600 hover:text-gray-900">Sobre nosotros</a></li>
+                    <li class="mb-6"><a href="./sobre-nosotros.php" class="text-gray-600 hover:text-gray-900">Sobre nosotros</a></li>
                     <li class="mb-6"><a href="./menu.php" class="text-gray-600 hover:text-gray-900">Productos</a></li>
                     <li class="mb-6"><a href="./contacto.html" class="text-gray-600 hover:text-gray-900">Contacto</a></li>
                     <li><a href="./nuestra-gente.html" class="text-gray-600 hover:text-gray-900">Nuestra Gente</a></li>
@@ -560,5 +800,59 @@ $rol_user    = $_SESSION['rol']    ?? 'usuario';
 </footer>
 
 <script src="./js/session-nav.js"></script>
+<script>
+    // Calificaciones interactivas
+    document.querySelectorAll('.rating-block').forEach(block => {
+        const stars = block.querySelectorAll('.star');
+        const ratingText = block.querySelector('.rating-text');
+        const tooltip = block.querySelector('.rating-tooltip');
+        const productId = block.dataset.productId;
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                const rating = parseInt(star.dataset.rating);
+                stars.forEach((s, i) => {
+                    s.classList.toggle('fas', i < rating);
+                    s.classList.toggle('far', i >= rating);
+                    s.classList.toggle('text-yellow-400', i < rating);
+                    s.classList.toggle('text-gray-500', i >= rating);
+                });
+            });
+
+            star.addEventListener('mouseleave', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('fas', i < currentRating);
+                    s.classList.toggle('far', i >= currentRating);
+                    s.classList.toggle('text-yellow-400', i < currentRating);
+                    s.classList.toggle('text-gray-500', i >= currentRating);
+                });
+            });
+
+            star.addEventListener('click', () => {
+                currentRating = parseInt(star.dataset.rating);
+                ratingText.textContent = currentRating.toFixed(1);
+                ratingText.classList.remove('text-gray-500');
+                ratingText.classList.add('text-yellow-400');
+                tooltip.textContent = '¡Gracias por calificar!';
+                tooltip.classList.remove('text-gray-400');
+                tooltip.classList.add('text-yellow-400');
+
+                // Aquí se enviaría al backend
+                console.log(`Producto ${productId} calificado con ${currentRating} estrellas`);
+            });
+        });
+
+        block.addEventListener('mouseenter', () => {
+            tooltip.classList.remove('opacity-0');
+            tooltip.classList.add('opacity-100');
+        });
+
+        block.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('opacity-100');
+            tooltip.classList.add('opacity-0');
+        });
+    });
+</script>
 </body>
 </html>

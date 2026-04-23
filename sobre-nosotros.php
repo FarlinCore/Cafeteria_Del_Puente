@@ -187,8 +187,11 @@ $es_admin = isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin';
                 <?php endif; ?>
             </div>
 
-            <!-- Grid: placeholder izq | foto der — bordes superiores alineados -->
-            <div class="grid grid-cols-1                 <div>
+            <!-- Grid: 2 columnas — historia izq | foto der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+                <!-- LEFT: Historia + Stats -->
+                <div>
                     <!-- Historia dinámica -->
                     <?php if (!empty($historia)): ?>
                     <div class="relative border border-[#F47E24]/25 rounded-2xl p-7 bg-[#3d1e0b]">
@@ -236,11 +239,9 @@ $es_admin = isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin';
                             <div class="text-[#c9a882] text-xs mt-2 uppercase tracking-wider leading-tight">Sonrisas al día</div>
                         </div>
                     </div>
-                </div>iv>
-                    </div>
                 </div>
 
-                <!-- RIGHT: Foto sola — borde superior alineado con el placeholder -->
+                <!-- RIGHT: Foto sola -->
                 <div
                     class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-[#F47E24]/20 h-full min-h-[460px]">
                     <img src="./images/puente fondo.jpg" alt="Cafetería del Puente"

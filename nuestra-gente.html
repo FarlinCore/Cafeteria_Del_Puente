@@ -100,7 +100,7 @@
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
                             href="./menu.php">Menú</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
-                            href="./sobre-nosotros.html">Sobre Nosotros</a></li>
+                            href="./sobre-nosotros.php">Sobre Nosotros</a></li>
                     <li><a class="md:p-4 py-3 px-0 block text-[#F47E24] font-semibold"
                             href="./nuestra-gente.html">Nuestra Gente</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
@@ -184,6 +184,86 @@
             <i class="fas fa-chevron-down text-[#7a5035] text-xs"></i>
         </div>
     </section>
+
+    <!-- ====================================================== -->
+    <!-- SUBIR FOTO SECCIÓN -->
+    <!-- ====================================================== -->
+    <section class="bg-[#f5ece4] py-16 px-4 md:px-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-[#2c1408] mb-4">Comparte tu Momento</h2>
+            <p class="text-[#7a5035] mb-8">¿Tienes una foto especial en Del Puente? Súbela y el admin la evaluará para publicarla.</p>
+            <button id="uploadBtn" onclick="abrirModalFoto()" class="bg-[#F47E24] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e06b15] transition-colors shadow-lg shadow-[#F47E24]/30">
+                <i class="fas fa-camera mr-2"></i>Subir Foto
+            </button>
+        </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- MODAL: SUBIR FOTO -->
+    <!-- ====================================================== -->
+    <div id="modal-foto" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="cerrarModalFoto()"></div>
+        <div class="relative bg-[#2c1408] border border-[#F47E24]/25 rounded-2xl shadow-2xl w-full max-w-md z-10 overflow-hidden">
+            <!-- Header -->
+            <div class="bg-[#3d1e0b] px-6 py-4 flex items-center justify-between border-b border-[#F47E24]/15">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-[#F47E24]/15 flex items-center justify-center">
+                        <i class="fas fa-camera text-[#F47E24] text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-sm">Comparte tu foto</h3>
+                        <p class="text-[#c9a882] text-xs">El admin la revisará antes de publicarla</p>
+                    </div>
+                </div>
+                <button onclick="cerrarModalFoto()" class="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="px-6 py-6" id="foto-form-body">
+                <form id="form-foto" onsubmit="enviarFoto(event)">
+                    <div class="mb-4">
+                        <label class="block text-[#c9a882] text-xs font-bold uppercase tracking-wider mb-2">Tu nombre (opcional)</label>
+                        <input type="text" id="foto-nombre" name="nombre" placeholder="Ej: Juan García" maxlength="120"
+                            class="w-full bg-[#3d1e0b] border border-[#F47E24]/20 text-white placeholder-[#7a5035] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#F47E24]/60 transition-all">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-[#c9a882] text-xs font-bold uppercase tracking-wider mb-2">Tu foto *</label>
+                        <div id="drop-zone" onclick="document.getElementById('foto-file').click()"
+                            class="border-2 border-dashed border-[#F47E24]/25 rounded-xl p-8 text-center cursor-pointer hover:border-[#F47E24]/60 hover:bg-[#F47E24]/5 transition-all group">
+                            <i class="fas fa-cloud-upload-alt text-[#F47E24]/40 text-3xl group-hover:text-[#F47E24]/70 transition-colors mb-2 block"></i>
+                            <p class="text-[#c9a882] text-sm" id="drop-text">Haz clic o arrastra tu imagen aquí</p>
+                            <p class="text-[#7a5035] text-xs mt-1">JPG, PNG, WEBP · Máx. 5 MB</p>
+                        </div>
+                        <input type="file" id="foto-file" name="foto" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="previewFoto(this)">
+                        <div id="foto-preview-wrap" class="hidden mt-3 relative rounded-xl overflow-hidden h-40">
+                            <img id="foto-preview-img" src="" alt="Preview" class="w-full h-full object-cover">
+                            <button type="button" onclick="limpiarFoto()" class="absolute top-2 right-2 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center text-white hover:bg-red-500/80 transition-all">
+                                <i class="fas fa-times text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="cerrarModalFoto()" class="flex-1 py-3 rounded-xl border border-white/20 text-white/70 text-sm font-semibold hover:border-white/40 hover:text-white transition-all">Cancelar</button>
+                        <button type="submit" id="btn-enviar-foto" class="flex-1 py-3 rounded-xl bg-[#F47E24] hover:bg-[#e06b15] text-white text-sm font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane"></i> Enviar para revisión
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Éxito -->
+            <div id="foto-success" class="hidden px-6 py-10 text-center">
+                <div class="w-16 h-16 rounded-full bg-green-500/15 border-2 border-green-500/40 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-green-400 text-2xl"></i>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-2">¡Foto enviada!</h3>
+                <p class="text-[#c9a882] text-sm leading-relaxed mb-6">Gracias por compartir tu momento con nosotros.<br>El administrador revisará tu foto antes de publicarla al público.</p>
+                <button onclick="cerrarModalFoto()" class="bg-[#F47E24] hover:bg-[#e06b15] text-white font-bold px-6 py-2.5 rounded-full transition-all">Cerrar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- ====================================================== -->
     <!-- BENTO GRID: MOMENTOS DEL PUENTE -->
@@ -329,7 +409,7 @@
             </div>
 
             <!-- 8 placeholder frames -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5" id="placeholders-grid">
 
                 <div
                     class="bg-[#2e1509] border-2 border-dashed border-[#F47E24]/15 rounded-2xl overflow-hidden aspect-[3/4] flex flex-col items-center justify-center gap-3 hover:border-[#F47E24]/50 hover:bg-[#3d1e0b] transition-all duration-300 cursor-pointer group">
@@ -486,7 +566,7 @@
                     <ul class="text-sm transition-all duration-500">
                         <li class="mb-6"><a href="./index.html" class="text-gray-600 hover:text-gray-900">Inicio</a>
                         </li>
-                        <li class="mb-6"><a href="./sobre-nosotros.html" class="text-gray-600 hover:text-gray-900">Sobre
+                        <li class="mb-6"><a href="./sobre-nosotros.php" class="text-gray-600 hover:text-gray-900">Sobre
                                 nosotros</a></li>
                         <li class="mb-6"><a href="./menu.php" class="text-gray-600 hover:text-gray-900">Productos</a>
                         </li>
@@ -534,6 +614,79 @@
     </footer>
 
     <script src="./js/session-nav.js"></script>
+    <script>
+    // ── Modal de subir foto ──────────────────────────────────────────
+    function abrirModalFoto() {
+        const m = document.getElementById('modal-foto');
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+    function cerrarModalFoto() {
+        const m = document.getElementById('modal-foto');
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+        document.body.style.overflow = '';
+        // Reset form
+        document.getElementById('form-foto').reset();
+        limpiarFoto();
+        document.getElementById('foto-form-body').style.display = '';
+        document.getElementById('foto-success').classList.add('hidden');
+    }
+    function previewFoto(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('foto-preview-img').src = e.target.result;
+                document.getElementById('foto-preview-wrap').classList.remove('hidden');
+                document.getElementById('drop-text').textContent = input.files[0].name;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function limpiarFoto() {
+        document.getElementById('foto-file').value = '';
+        document.getElementById('foto-preview-wrap').classList.add('hidden');
+        document.getElementById('foto-preview-img').src = '';
+        document.getElementById('drop-text').textContent = 'Haz clic o arrastra tu imagen aquí';
+    }
+    function enviarFoto(e) {
+        e.preventDefault();
+        const fileInput = document.getElementById('foto-file');
+        if (!fileInput.files || !fileInput.files[0]) {
+            alert('Por favor selecciona una foto.'); return;
+        }
+        const btn = document.getElementById('btn-enviar-foto');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+        const fd = new FormData(document.getElementById('form-foto'));
+        fetch('./backend/fotos/subir_foto.php', { method: 'POST', body: fd })
+            .then(r => r.json())
+            .then(d => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar para revisión';
+                if (d.ok || d.mensaje) {
+                    document.getElementById('foto-form-body').style.display = 'none';
+                    document.getElementById('foto-success').classList.remove('hidden');
+                } else {
+                    alert(d.error || 'Error al enviar la foto.');
+                }
+            })
+            .catch(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar para revisión';
+                alert('Error de conexión.');
+            });
+    }
+
+    // Hacer que los placeholders de clientes también abran el modal
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('#placeholders-grid > div').forEach(card => {
+            card.addEventListener('click', abrirModalFoto);
+        });
+    });
+    </script>
 </body>
 
 </html>

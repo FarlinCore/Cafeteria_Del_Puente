@@ -72,7 +72,7 @@
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
                             href="./menu.php">Menú</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
-                            href="./sobre-nosotros.html">Sobre Nosotros</a></li>
+                            href="./sobre-nosotros.php">Sobre Nosotros</a></li>
                     <li><a class="md:p-4 py-3 px-0 block hover:text-[#F47E24] transition-colors duration-200"
                             href="./nuestra-gente.html">Nuestra Gente</a></li>
                     <li><a class="md:p-4 py-3 px-0 block text-[#F47E24] font-semibold"
@@ -136,13 +136,13 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label for="nombre" class="block text-[#c9a882] text-sm mb-2 font-medium">Nombre</label>
-                                <input type="text" id="nombre" placeholder="Tu nombre completo"
+                                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo"
                                     class="w-full px-4 py-3 rounded-xl bg-[#3d1e0b] border border-[#F47E24]/20 text-[#f5ece4] placeholder-[#a07050] focus:outline-none focus:border-[#F47E24]/60 focus:ring-1 focus:ring-[#F47E24]/30 transition-colors duration-200">
                             </div>
                             <div>
                                 <label for="telefono"
                                     class="block text-[#c9a882] text-sm mb-2 font-medium">Teléfono</label>
-                                <input type="tel" id="telefono" placeholder="809-000-0000"
+                                <input type="tel" id="telefono" name="telefono" placeholder="809-000-0000"
                                     class="w-full px-4 py-3 rounded-xl bg-[#3d1e0b] border border-[#F47E24]/20 text-[#f5ece4] placeholder-[#a07050] focus:outline-none focus:border-[#F47E24]/60 focus:ring-1 focus:ring-[#F47E24]/30 transition-colors duration-200">
                             </div>
                         </div>
@@ -150,33 +150,36 @@
                         <!-- Email -->
                         <div>
                             <label for="email" class="block text-[#c9a882] text-sm mb-2 font-medium">Correo
-                                electrónico</label>
-                            <input type="email" id="email" placeholder="correo@ejemplo.com"
+                                electrónico *</label>
+                            <input type="email" id="email" name="correo" placeholder="correo@ejemplo.com"
                                 class="w-full px-4 py-3 rounded-xl bg-[#3d1e0b] border border-[#F47E24]/20 text-[#f5ece4] placeholder-[#a07050] focus:outline-none focus:border-[#F47E24]/60 focus:ring-1 focus:ring-[#F47E24]/30 transition-colors duration-200">
                         </div>
 
                         <!-- Asunto -->
                         <div>
                             <label for="asunto" class="block text-[#c9a882] text-sm mb-2 font-medium">Asunto</label>
-                            <select id="asunto"
+                            <select id="asunto" name="asunto"
                                 class="w-full px-4 py-3 rounded-xl bg-[#3d1e0b] border border-[#F47E24]/20 text-[#f5ece4] focus:outline-none focus:border-[#F47E24]/60 focus:ring-1 focus:ring-[#F47E24]/30 transition-colors duration-200 appearance-none">
                                 <option value="" class="bg-[#2c1408]">Selecciona un asunto...</option>
-                                <option value="reserva" class="bg-[#2c1408]">Reserva de mesa</option>
-                                <option value="pedido" class="bg-[#2c1408]">Pedido especial</option>
-                                <option value="sugerencia" class="bg-[#2c1408]">Sugerencia</option>
-                                <option value="otro" class="bg-[#2c1408]">Otro</option>
+                                <option value="Reserva de mesa" class="bg-[#2c1408]">Reserva de mesa</option>
+                                <option value="Pedido especial" class="bg-[#2c1408]">Pedido especial</option>
+                                <option value="Sugerencia" class="bg-[#2c1408]">Sugerencia</option>
+                                <option value="Otro" class="bg-[#2c1408]">Otro</option>
                             </select>
                         </div>
 
                         <!-- Mensaje -->
                         <div>
-                            <label for="mensaje" class="block text-[#c9a882] text-sm mb-2 font-medium">Mensaje</label>
-                            <textarea id="mensaje" rows="5" placeholder="Escríbenos lo que necesitas..."
+                            <label for="mensaje" class="block text-[#c9a882] text-sm mb-2 font-medium">Mensaje *</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escríbenos lo que necesitas..."
                                 class="w-full px-4 py-3 rounded-xl bg-[#3d1e0b] border border-[#F47E24]/20 text-[#f5ece4] placeholder-[#a07050] focus:outline-none focus:border-[#F47E24]/60 focus:ring-1 focus:ring-[#F47E24]/30 transition-colors duration-200 resize-none"></textarea>
                         </div>
 
+                        <!-- Respuesta del servidor -->
+                        <div id="contact-msg" class="hidden p-4 rounded-xl text-sm font-semibold"></div>
+
                         <!-- Botón enviar -->
-                        <button type="submit"
+                        <button type="submit" id="btn-contact"
                             class="w-full flex items-center justify-center gap-2 bg-[#F47E24] hover:bg-[#e06b15] text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#F47E24]/20 text-base">
                             <i class="fas fa-paper-plane text-sm"></i>
                             Enviar mensaje
@@ -321,7 +324,7 @@
                     <ul class="text-sm transition-all duration-500">
                         <li class="mb-6"><a href="./index.html" class="text-gray-600 hover:text-gray-900">Inicio</a>
                         </li>
-                        <li class="mb-6"><a href="./sobre-nosotros.html" class="text-gray-600 hover:text-gray-900">Sobre
+                        <li class="mb-6"><a href="./sobre-nosotros.php" class="text-gray-600 hover:text-gray-900">Sobre
                                 nosotros</a></li>
                         <li class="mb-6"><a href="./menu.php" class="text-gray-600 hover:text-gray-900">Productos</a>
                         </li>
@@ -369,6 +372,39 @@
     </footer>
 
     <script src="./js/session-nav.js"></script>
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btn-contact');
+        const msg = document.getElementById('contact-msg');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+
+        const fd = new FormData(this);
+        fetch('./backend/contacto/guardar_mensaje.php', { method: 'POST', body: fd })
+            .then(r => r.json())
+            .then(d => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane text-sm"></i> Enviar mensaje';
+                msg.classList.remove('hidden');
+                if (d.ok) {
+                    msg.className = 'p-4 rounded-xl text-sm font-semibold bg-green-900/40 border border-green-500/30 text-green-300';
+                    msg.innerHTML = '<i class="fas fa-check-circle mr-2"></i>' + d.mensaje;
+                    document.getElementById('contact-form').reset();
+                } else {
+                    msg.className = 'p-4 rounded-xl text-sm font-semibold bg-red-900/40 border border-red-500/30 text-red-300';
+                    msg.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>' + (d.error || 'Error al enviar.');
+                }
+            })
+            .catch(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane text-sm"></i> Enviar mensaje';
+                msg.className = 'p-4 rounded-xl text-sm font-semibold bg-red-900/40 border border-red-500/30 text-red-300';
+                msg.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Error de conexión. Intenta de nuevo.';
+                msg.classList.remove('hidden');
+            });
+    });
+    </script>
 </body>
 
 </html>
